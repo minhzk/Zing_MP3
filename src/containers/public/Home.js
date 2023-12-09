@@ -4,7 +4,7 @@ import { Header, Slider } from '../../components'
 const Home = () => {
 
   return (
-    <div className='overflow-y-auto px-[59px]'>
+    <div className='overflow-y-auto px-[59px] w-full'>
       <div className='h-[70px] flex items-center'>
         <Header/>
       </div>
