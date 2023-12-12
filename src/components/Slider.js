@@ -15,9 +15,9 @@ const Slider = () => {
             const list = getArraySlider(min, max, sliderEls.length - 1)
             for (let i = 0; i < sliderEls.length; i++) {
                     // Delete classnames (css)
-                    sliderEls[i]?.classList.remove('animate-slide-right','order-last','z-20')
-                    sliderEls[i]?.classList.remove('animate-slide-left','order-first','z-10')
-                    sliderEls[i]?.classList.remove('animate-slide-left2','order-2','z-10')
+                    sliderEls[i]?.classList.remove('animate-slide-right','order-last','z-10')
+                    sliderEls[i]?.classList.remove('animate-slide-left','order-first','z-20')
+                    sliderEls[i]?.classList.remove('animate-slide-left2','order-2','z-20')
 
                     // Hide or show images
                     if (list.some(item => item === i )) {
