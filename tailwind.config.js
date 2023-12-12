@@ -16,7 +16,8 @@ module.exports = {
                 'main-300': '#CED9D9',
                 'main-400': '#C0D8D8',
                 'main-500': '#0E8080',
-                'black-100': '#32323D'
+                'black-100': '#32323D',
+                'text-hover': '#0f7070'
             },
             keyframes: {
                 'slide-right': {
