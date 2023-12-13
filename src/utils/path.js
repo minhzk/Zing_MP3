@@ -3,7 +3,8 @@ const path = {
     HOME: '',
     LOGIN: 'login',
     STAR: '*',
-    MY_MUSIC: 'mymusic'
-}
+    MY_MUSIC: 'mymusic',
+    PLAYLIST__TITLE__PID: 'playlist/:title/:pid',
+};
 
-export default path
+export default path;

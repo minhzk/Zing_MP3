@@ -6,13 +6,13 @@ const { BsArrowLeft, BsArrowRight } = icons
 
 const Header = () => {
   return (
-    <div className='flex justify-between w-full items-center'>
+    <div className='flex justify-between w-full items-center px-[59px]'>
         <div className='flex gap-6 w-full items-center'>
             <div className='flex gap-6 text-gray-400'>
                 <span><BsArrowLeft size={24}/></span>
                 <span><BsArrowRight size={24}/></span>
             </div>
-            <div className='w-3/5'>
+            <div className='w-1/2'>
                 <Search/>
             </div>
         </div>
