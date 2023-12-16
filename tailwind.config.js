@@ -19,6 +19,7 @@ module.exports = {
                 'black-100': '#32323D',
                 'text-hover': '#0f7070',
                 'text-secondary': '#696969',
+                'song-item-action': '#32323D80',
             },
             keyframes: {
                 'slide-right': {

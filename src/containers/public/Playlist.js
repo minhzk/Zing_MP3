@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 import * as apis from '../../apis'
 import moment from 'moment'
+import { Lists } from '../../components'
 
 const Playlist = () => {
 
@@ -29,14 +30,18 @@ const Playlist = () => {
             <span>Cập nhật:</span>
             <span>{moment.unix(playlistData?.contentLastUpdate).format("DD/MM/YYYY")}</span>
           </span>
-          <span>
+          <span className='text-center'>
             {playlistData?.artistsNames}
           </span>
           <span>{`${Math.round(playlistData?.like / 1000)}K người yêu thích`}</span>
         </div>
       </div>
-      <div className='flex-auto border border-blue-500'>
-        Playlist
+      <div className='flex-auto border border-blue-500 overflow-y-scroll'>
+        <span className='text-sm'>
+          <span className='text-text-secondary'>Lời tựa </span>
+          <span className='text-black-100'>{playlistData?.sortDescription}</span>
+        </span>
+        <Lists songs={playlistData?.song?.items} totalDuration={playlistData?.song?.totalDuration} />
       </div>
     </div>
   )
