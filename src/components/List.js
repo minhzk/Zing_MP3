@@ -5,13 +5,24 @@ import React, {memo} from 'react'
 // là props cx re-render lại 
 import moment from 'moment';
 import icons from '../utils/icons';
+import { useDispatch } from 'react-redux';
+import * as actions from '../store/actions';
 
 const { LuMusic } = icons
 
 const List = ({songData}) => {
+
+    const dispatch = useDispatch()
+
     // console.log({songData});
   return (
-    <div className='flex justify-between items-center p-[10px] text-xs border-t border-[rgba(0,0,0,0.05)] hover:bg-main-200 cursor-pointer'>
+    <div 
+    className='flex justify-between items-center p-[10px] text-xs border-t border-[rgba(0,0,0,0.05)] hover:bg-main-200 cursor-pointer'
+    onClick={() => {
+        dispatch(actions.setCurSongId(songData?.encodeId))
+        dispatch(actions.play(true))
+    }}
+    >
         <div className='flex items-center gap-2 flex-1'>
             <span className='text-song-item-action'><LuMusic size={15}/></span>
             <img src={songData?.thumbnail} alt="thumbnail" className='w-10 h-10 object-cover rounded-md' />
