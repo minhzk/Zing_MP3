@@ -9,7 +9,7 @@ const Public = () => {
         <div className='w-[240px] h-screen flex-none border border-blue-500'>
           <SidebarLeft/>
         </div>
-        <div className='flex-auto border border-red-500 overflow-hidden'>
+        <div className='flex-auto border border-red-500'>
           <div className='h-[70px] flex items-center mb-10'>
             <Header/>
           </div>

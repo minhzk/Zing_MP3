@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import * as apis from '../../apis'
 import moment from 'moment'
 import { Lists } from '../../components'
+import { Scrollbars } from 'react-custom-scrollbars-2'
 
 const Playlist = () => {
 
@@ -21,29 +22,31 @@ const Playlist = () => {
       fetchDetailPlaylist()
     }, [pid])
   return (
-    <div className='flex gap-8 w-full'>
-      <div className='w-[300px] border border-red-500 flex flex-col items-center'>
-        <img src={playlistData?.thumbnailM} alt="thumbnail" className='w-full object-contain rounded-lg shadow-thumbnail' />
-        <h3 className='text-xl font-bold text-black-100 mt-3'>{playlistData.title}</h3>
-        <div className='text-text-secondary text-[13px] font-normal leading-5 flex flex-col items-center'>
-          <span className='flex gap-2 items-center'>
-            <span>Cập nhật:</span>
-            <span>{moment.unix(playlistData?.contentLastUpdate).format("DD/MM/YYYY")}</span>
-          </span>
-          <span className='text-center'>
-            {playlistData?.artistsNames}
-          </span>
-          <span>{`${Math.round(playlistData?.like / 1000)}K người yêu thích`}</span>
+    <div className='flex gap-8 w-full h-full'>
+        <div className='flex-none w-[300px] flex flex-col items-center'>
+          <img src={playlistData?.thumbnailM} alt="thumbnail" className='w-full object-contain rounded-lg shadow-thumbnail' />
+          <h3 className='text-xl font-bold text-black-100 mt-3'>{playlistData.title}</h3>
+          <div className='text-text-secondary text-[13px] font-normal leading-5 flex flex-col items-center'>
+            <span className='flex gap-2 items-center'>
+              <span>Cập nhật:</span>
+              <span>{moment.unix(playlistData?.contentLastUpdate).format("DD/MM/YYYY")}</span>
+            </span>
+            <span className='text-center'>
+              {playlistData?.artistsNames}
+            </span>
+            <span>{`${Math.round(playlistData?.like / 1000)}K người yêu thích`}</span>
+          </div>
         </div>
+        <Scrollbars style={{ width: '100%', height: "70vh" }}>
+          <div className='flex-auto mb-40'>
+            <span className='text-sm mb-[10px]'>
+              <span className='text-text-secondary'>Lời tựa </span>
+              <span className='text-black-100 font-normal'>{playlistData?.sortDescription}</span>
+            </span>
+            <Lists songs={playlistData?.song?.items} totalDuration={playlistData?.song?.totalDuration} />
+          </div>
+        </Scrollbars>
       </div>
-      <div className='flex-auto border border-blue-500 overflow-y-scroll'>
-        <span className='text-sm'>
-          <span className='text-text-secondary'>Lời tựa </span>
-          <span className='text-black-100'>{playlistData?.sortDescription}</span>
-        </span>
-        <Lists songs={playlistData?.song?.items} totalDuration={playlistData?.song?.totalDuration} />
-      </div>
-    </div>
   )
 }
 
