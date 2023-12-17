@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import * as apis from '../apis';
 import icons from '../utils/icons';
+import * as actions from '../store/actions'
 
 const {
     IoMdHeart,
@@ -16,11 +17,11 @@ const {
 } = icons;
 
 const Player = () => {
-    const audioEl = new Audio();
+    const audioEl = useRef(new Audio())
     const { curSongId, isPlaying } = useSelector((state) => state.music);
     const [songInfo, setSongInfo] = useState(null);
     const [source, setSource] = useState(null);
-    // const [isPlaying, setIsPlaying] = useState(false)
+    const dispatch = useDispatch()
 
     // useEffect kh sd được bất đồng bộ
     useEffect(() => {
@@ -42,10 +43,21 @@ const Player = () => {
     }, [curSongId]);
 
     useEffect(() => {
-        // audioEl.play()
-    }, [curSongId]);
+        audioEl.current.pause()
+        audioEl.current.src = source
+        audioEl.current.load()
+        if (isPlaying) audioEl.current.play()
+    }, [curSongId, source]);
 
-    const handleTogglePlayMusic = () => {};
+    const handleTogglePlayMusic = () => {
+        if (isPlaying) {
+            audioEl.current?.pause()
+            dispatch(actions.play(false))
+        } else {
+            audioEl.current?.play()
+            dispatch(actions.play(true))
+        }
+    };
 
     return (
         <div className="bg-main-400 px-5 h-full flex py-2">
