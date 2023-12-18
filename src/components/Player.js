@@ -4,6 +4,7 @@ import * as apis from '../apis';
 import icons from '../utils/icons';
 import * as actions from '../store/actions'
 import moment from 'moment';
+import { toast } from 'react-toastify';
 
 const {
     IoMdHeart,
@@ -25,6 +26,7 @@ const Player = () => {
     const [curSecond, setCurSecond] = useState(0)
     const dispatch = useDispatch()
     const thumbRef = useRef()
+    const trackRef = useRef()
 
     // useEffect kh sd được bất đồng bộ
     useEffect(() => {
@@ -40,6 +42,12 @@ const Player = () => {
             if (res2.data.err === 0) {
                 audio.pause()
                 setAudio(new Audio(res2.data.data['128']))
+            } else {
+                setAudio(new Audio())
+                dispatch(actions.play(false))
+                toast.warn(res2.data.msg)
+                setCurSecond(0)
+                thumbRef.current.style.cssText = `right: 100%`
             }
         };
 
@@ -47,21 +55,26 @@ const Player = () => {
     }, [curSongId]);
 
     useEffect(() => {
+        intervalId && clearInterval(intervalId)
+        audio.pause()
+        audio.load()
         if (isPlaying) {
+            audio.play()
             intervalId = setInterval(() => {
-                let percent = Math.round(audio.currentTime * 10000 / songInfo.duration) / 100
+                let percent = Math.round(audio.currentTime * 10000 / songInfo?.duration) / 100
                 thumbRef.current.style.cssText = `right: ${100 - percent}%`
                 setCurSecond(Math.round(audio.currentTime))
             }, 100)
         } else {
-            intervalId && clearInterval(intervalId)
+            toast.warn()
         }
-    }, [isPlaying])
+    }, [audio]);
 
     useEffect(() => {
-        audio.load()
-        if (isPlaying) audio.play()
-    }, [audio]);
+        if (!isPlaying) {
+            intervalId && clearInterval(intervalId)
+        }
+    })
 
     const handleTogglePlayMusic = () => {
         if (isPlaying) {
@@ -72,6 +85,14 @@ const Player = () => {
             dispatch(actions.play(true))
         }
     };
+
+    const handleClickProgressbar = (e) => {
+        const trackRect = trackRef.current.getBoundingClientRect()
+        const percent = Math.round((e.clientX - trackRect.left) / trackRect.width * 10000) / 100
+        thumbRef.current.style.cssText = `right: ${100 - percent}%`
+        audio.currentTime = percent * songInfo?.duration / 100
+        console.log(curSecond);
+    }
 
     return (
         <div className="bg-main-400 px-5 h-full flex py-2">
@@ -131,8 +152,12 @@ const Player = () => {
                 </div>
                 <div className='w-full flex justify-center items-center gap-[10px] text-xs text-black-100 font-medium'>
                     <span className='opacity-50'>{moment.utc(curSecond*1000).format('mm:ss')}</span>
-                    <div className='w-3/4 h-1 relative bg-[rgba(0,0,0,0.1)] rounded-[4px] flex justify-center items-center'>
-                        <div ref={thumbRef} className='absolute top-0 left-0 h-1 bg-main-500 rounded-[4px]'></div>
+                    <div 
+                    className='w-3/4 h-1 hover:h-[6px] relative bg-[rgba(0,0,0,0.1)] rounded-[4px] flex cursor-pointer justify-center items-center'
+                    onClick={handleClickProgressbar}
+                    ref={trackRef}
+                    >
+                        <div ref={thumbRef} className='absolute top-0 left-0 bottom-0 bg-main-500 rounded-[4px]'></div>
                     </div>
                     <span>{moment.utc(songInfo?.duration*1000).format('mm:ss')}</span>
                 </div>
