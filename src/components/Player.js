@@ -20,10 +20,11 @@ const {
 
 var intervalId
 const Player = () => {
-    const { curSongId, isPlaying } = useSelector((state) => state.music);
+    const { curSongId, isPlaying, songs } = useSelector((state) => state.music);
     const [songInfo, setSongInfo] = useState(null);
     const [audio, setAudio] = useState(new Audio())
     const [curSecond, setCurSecond] = useState(0)
+    const [isShuffle, setIsShuffle] = useState(false)
     const dispatch = useDispatch()
     const thumbRef = useRef()
     const trackRef = useRef()
@@ -43,6 +44,7 @@ const Player = () => {
                 audio.pause()
                 setAudio(new Audio(res2.data.data['128']))
             } else {
+                audio.pause()
                 setAudio(new Audio())
                 dispatch(actions.play(false))
                 toast.warn(res2.data.msg)
@@ -94,6 +96,32 @@ const Player = () => {
         console.log(curSecond);
     }
 
+    const handleNextSong = () => {
+        if (songs) {
+            let currentSongIndex
+            songs?.forEach((item, index) => {
+                if (item.encodeId === curSongId) currentSongIndex = index
+            })
+            dispatch(actions.setCurSongId(songs[currentSongIndex + 1].encodeId))
+            dispatch(actions.play(true))
+        }
+    }
+
+    const handlePrevSong = () => {
+        if (songs) {
+            let currentSongIndex
+            songs?.forEach((item, index) => {
+                if (item.encodeId === curSongId) currentSongIndex = index
+            })
+            dispatch(actions.setCurSongId(songs[currentSongIndex - 1].encodeId))
+            dispatch(actions.play(true))
+        }
+    }
+
+    const handleShuffle = () => {
+
+    }
+
     return (
         <div className="bg-main-400 px-5 h-full flex py-2">
             <div className="w-[30%] flex-auto flex items-center gap-[10px]">
@@ -122,12 +150,15 @@ const Player = () => {
             <div className="w-[40%] flex-auto flex flex-col justify-center items-center border border-red-500 gap-1">
                 <div className="flex gap-8 justify-center items-center">
                     <span
-                        className="cursor-pointer"
+                        onClick={() => setIsShuffle(prev => !prev)}
+                        className={`cursor-pointer ${isShuffle && 'text-text-hover'}`}
                         title="Bật phát ngẫu nhiên"
                     >
                         <PiShuffleLight size={20} />
                     </span>
-                    <span className="cursor-pointer">
+                    <span 
+                    onClick={handlePrevSong}
+                    className={`${!songs ? 'text-gray-500' : 'cursor-pointer' }`}>
                         <RiSkipBackFill size={21} />
                     </span>
                     <span
@@ -140,7 +171,9 @@ const Player = () => {
                             <IoIosPlay size={22} />
                         )}
                     </span>
-                    <span className="cursor-pointer">
+                    <span 
+                    onClick={handleNextSong}
+                    className={`${!songs ? 'text-gray-500' : 'cursor-pointer' }`}>
                         <RiSkipForwardFill size={21} />
                     </span>
                     <span
