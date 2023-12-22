@@ -25,6 +25,7 @@ const Player = () => {
     const [audio, setAudio] = useState(new Audio())
     const [curSecond, setCurSecond] = useState(0)
     const [isShuffle, setIsShuffle] = useState(false)
+    const [isRepeat, setIsRepeat] = useState(false)
     const dispatch = useDispatch()
     const thumbRef = useRef()
     const trackRef = useRef()
@@ -60,7 +61,7 @@ const Player = () => {
         intervalId && clearInterval(intervalId)
         audio.pause()
         audio.load()
-        if (isPlaying) {
+        if (isPlaying && thumbRef.current) {
             audio.play()
             intervalId = setInterval(() => {
                 let percent = Math.round(audio.currentTime * 10000 / songInfo?.duration) / 100
@@ -77,6 +78,26 @@ const Player = () => {
             intervalId && clearInterval(intervalId)
         }
     })
+
+    useEffect(() => {
+        const handleEnded = () => {
+            console.log('end');
+            if (isRepeat) {
+                handleNextSong()
+            } else if (isShuffle) {
+                handleShuffle()
+            } else {
+                audio?.pause()
+                dispatch(actions.play(false))
+            }
+        }
+
+        audio.addEventListener('ended', handleEnded)
+
+        return () => {
+            audio.removeEventListener('ended', handleEnded)
+        }
+    }, [audio, isShuffle, isRepeat])
 
     const handleTogglePlayMusic = () => {
         if (isPlaying) {
@@ -119,7 +140,9 @@ const Player = () => {
     }
 
     const handleShuffle = () => {
-
+        const randomIndex = Math.round(Math.random() * songs?.length ) - 1
+        dispatch(actions.setCurSongId(songs[randomIndex].encodeId))
+        dispatch(actions.play(true))
     }
 
     return (
@@ -148,10 +171,10 @@ const Player = () => {
                 </div>
             </div>
             <div className="w-[40%] flex-auto flex flex-col justify-center items-center border border-red-500 gap-1">
-                <div className="flex gap-8 justify-center items-center">
+                <div className="flex gap-8 justify-center items-center text-black-100">
                     <span
                         onClick={() => setIsShuffle(prev => !prev)}
-                        className={`cursor-pointer ${isShuffle && 'text-text-hover'}`}
+                        className={`cursor-pointer ${isShuffle ? 'text-text-hover' : 'text-black-100'}`}
                         title="Bật phát ngẫu nhiên"
                     >
                         <PiShuffleLight size={20} />
@@ -177,8 +200,9 @@ const Player = () => {
                         <RiSkipForwardFill size={21} />
                     </span>
                     <span
-                        className="cursor-pointer"
+                        className={`cursor-pointer ${isRepeat && 'text-text-hover'}`}
                         title="Bật phát lại tất cả"
+                        onClick={() => setIsRepeat(prev => !prev)}
                     >
                         <PiRepeatLight size={20} />
                     </span>
