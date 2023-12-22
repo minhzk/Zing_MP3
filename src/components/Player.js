@@ -16,6 +16,7 @@ const {
     IoIosPlay,
     PiShuffleLight,
     IoIosPause,
+    PiRepeatOnceLight
 } = icons;
 
 var intervalId
@@ -25,7 +26,7 @@ const Player = () => {
     const [audio, setAudio] = useState(new Audio())
     const [curSecond, setCurSecond] = useState(0)
     const [isShuffle, setIsShuffle] = useState(false)
-    const [isRepeat, setIsRepeat] = useState(false)
+    const [repeatMode, setRepeatMode] = useState(0)
     const dispatch = useDispatch()
     const thumbRef = useRef()
     const trackRef = useRef()
@@ -82,10 +83,10 @@ const Player = () => {
     useEffect(() => {
         const handleEnded = () => {
             console.log('end');
-            if (isRepeat) {
-                handleNextSong()
-            } else if (isShuffle) {
+            if (isShuffle || (repeatMode === 1 && isShuffle)) {
                 handleShuffle()
+            } else if (repeatMode) {
+                repeatMode === 1 ? handleNextSong() : handleRepeatOnce()
             } else {
                 audio?.pause()
                 dispatch(actions.play(false))
@@ -97,7 +98,7 @@ const Player = () => {
         return () => {
             audio.removeEventListener('ended', handleEnded)
         }
-    }, [audio, isShuffle, isRepeat])
+    }, [audio, isShuffle, repeatMode])
 
     const handleTogglePlayMusic = () => {
         if (isPlaying) {
@@ -143,6 +144,10 @@ const Player = () => {
         const randomIndex = Math.round(Math.random() * songs?.length ) - 1
         dispatch(actions.setCurSongId(songs[randomIndex].encodeId))
         dispatch(actions.play(true))
+    }
+
+    const handleRepeatOnce = () => {
+        audio.play()
     }
 
     return (
@@ -200,11 +205,10 @@ const Player = () => {
                         <RiSkipForwardFill size={21} />
                     </span>
                     <span
-                        className={`cursor-pointer ${isRepeat && 'text-text-hover'}`}
-                        title="Bật phát lại tất cả"
-                        onClick={() => setIsRepeat(prev => !prev)}
+                        className={`cursor-pointer ${repeatMode && 'text-text-hover'}`}
+                        onClick={() => setRepeatMode(prev => prev === 2 ? 0 : prev + 1)}
                     >
-                        <PiRepeatLight size={20} />
+                        {repeatMode === 2 ? <PiRepeatOnceLight title='Bật phát lại tất cả' size={20}/> : <PiRepeatLight title='Bật phát lại một bài' size={20} /> }
                     </span>
                 </div>
                 <div className='w-full flex justify-center items-center gap-[10px] text-xs text-black-100 font-medium'>
