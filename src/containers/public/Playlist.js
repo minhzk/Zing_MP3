@@ -26,7 +26,7 @@ const Playlist = () => {
       fetchDetailPlaylist()
     }, [pid])
   return (
-    <div className='flex gap-8 w-full h-full'>
+    <div className='flex gap-8 w-full h-full mt-[30px] pt-10'>
         <div className='flex-none w-[300px] flex flex-col items-center'>
           <img src={playlistData?.thumbnailM} alt="thumbnail" className='w-full object-contain rounded-lg shadow-thumbnail' />
           <h3 className='text-xl font-bold text-black-100 mt-3'>{playlistData.title}</h3>

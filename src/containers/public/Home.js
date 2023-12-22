@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
-import { Slider } from '../../components'
+import { Slider, Section } from '../../components'
 
 const Home = () => {
 
   return (
-    <div className='overflow-y-auto w-full'>
+    <div className='overflow-y-auto w-full mt-8'>
       <Slider/>
-
+      <Section/>
     </div>
   )
 }
