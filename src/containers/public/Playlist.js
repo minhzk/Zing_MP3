@@ -2,14 +2,19 @@ import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 import * as apis from '../../apis'
 import moment from 'moment'
-import { Lists } from '../../components'
+import { Lists, AudioLoading } from '../../components'
 import { Scrollbars } from 'react-custom-scrollbars-2'
 import { useDispatch } from 'react-redux'
 import * as actions from '../../store/actions'
+import { useSelector } from 'react-redux'
+import icons from '../../utils/icons'
+
+const {IoIosPlay} = icons
 
 const Playlist = () => {
 
     const { title, pid } = useParams()
+    const { curSongId, isPlaying, songs } = useSelector((state) => state.music);
     const [playlistData, setPlaylistData] = useState({})
     const dispatch = useDispatch()
 
@@ -28,7 +33,15 @@ const Playlist = () => {
   return (
     <div className='flex gap-8 w-full h-full mt-[30px] pt-10'>
         <div className='flex-none w-[300px] flex flex-col items-center'>
-          <img src={playlistData?.thumbnailM} alt="thumbnail" className='w-full object-contain rounded-lg shadow-thumbnail' />
+          <div className='w-full relative rounded-lg cursor-pointer overflow-hidden'>
+            <img src={playlistData?.thumbnailM} alt="thumbnail" className='object-contain w-full rounded-lg shadow-thumbnail scale-100 hover:scale-110 transition ease-in-out duration-700' />
+            <div className={`absolute top-0 left-0 bottom-0 right-0 text-white flex items-center justify-center ${!isPlaying ? 'hover:bg-overlay-40' : 'hover:bg-transparent'}`}>
+              <span 
+                className='p-2 border border-white rounded-full flex items-center justify-center'>
+                {isPlaying ? <AudioLoading/> : <IoIosPlay size={30}/>}
+              </span>
+            </div>
+          </div>
           <h3 className='text-xl font-bold text-black-100 mt-3'>{playlistData.title}</h3>
           <div className='text-text-secondary text-[13px] font-normal leading-5 flex flex-col items-center'>
             <span className='flex gap-2 items-center'>

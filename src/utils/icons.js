@@ -4,7 +4,7 @@ import { TbChartArcs } from "react-icons/tb"
 import { BsArrowLeft, BsArrowRight, BsThreeDots  } from "react-icons/bs";
 import { GoSearch } from "react-icons/go";
 import { IoMdHeartEmpty, IoMdHeart, IoIosPause, IoIosPlay    } from "react-icons/io";
-import { PiRepeatLight, PiShuffleLight  } from "react-icons/pi";
+import { PiRepeatLight, PiShuffleLight, PiRepeatOnceLight  } from "react-icons/pi";
 import { LuMusic, LuDot  } from "react-icons/lu";
 const icons = {
     MdOutlineLibraryMusic ,
@@ -24,7 +24,8 @@ const icons = {
     PiShuffleLight,
     IoIosPause,
     LuMusic,
-    LuDot 
+    LuDot,
+    PiRepeatOnceLight
 }
 
 export default icons
