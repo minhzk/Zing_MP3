@@ -5,7 +5,7 @@ import { BsArrowLeft, BsArrowRight, BsThreeDots  } from "react-icons/bs";
 import { GoSearch } from "react-icons/go";
 import { IoMdHeartEmpty, IoMdHeart, IoIosPause, IoIosPlay    } from "react-icons/io";
 import { PiRepeatLight, PiShuffleLight, PiRepeatOnceLight  } from "react-icons/pi";
-import { LuMusic, LuDot  } from "react-icons/lu";
+import { LuMusic, LuDot, LuListMusic, LuVolume1, LuVolume2, LuVolumeX  } from "react-icons/lu";
 const icons = {
     MdOutlineLibraryMusic ,
     RiPieChartLine,
@@ -25,7 +25,11 @@ const icons = {
     IoIosPause,
     LuMusic,
     LuDot,
-    PiRepeatOnceLight
+    PiRepeatOnceLight,
+    LuListMusic,
+    LuVolume2,
+    LuVolumeX,
+    LuVolume1
 }
 
 export default icons
