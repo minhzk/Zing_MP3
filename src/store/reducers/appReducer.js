@@ -2,8 +2,11 @@ import actionTypes from "../actions/actionTypes";
 
 const initState = {
     banner: [],
-    chill: {}
-
+    chill: {},
+    sad: {},
+    top100: {},
+    hotAlbum: {},
+    isLoading: false,
 }
 
 const appReducer = (state = initState, action) => {
@@ -13,6 +16,15 @@ const appReducer = (state = initState, action) => {
                 ...state,
                 banner: action.homeData?.find(item => item.sectionId === 'hSlider')?.items || null,
                 chill: action.homeData?.find(item => item.sectionId === 'hEditorTheme') || {},
+                sad: action.homeData?.find(item => item.sectionId === 'hEditorTheme4') || {},
+                top100: action.homeData?.find(item => item.sectionId === 'h100') || {},
+                hotAlbum: action.homeData?.find(item => item.sectionId === 'hAlbum') || {},
+
+            }
+        case actionTypes.LOADING:
+            return {
+                ...state,
+                isLoading: action.flag
             }
     
         default:
