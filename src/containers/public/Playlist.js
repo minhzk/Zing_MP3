@@ -13,14 +13,16 @@ const {IoIosPlay} = icons
 
 const Playlist = () => {
 
-    const { title, pid } = useParams()
-    const { curSongId, isPlaying, songs } = useSelector((state) => state.music);
+    const { pid } = useParams()
+    const { isPlaying } = useSelector((state) => state.music);
     const [playlistData, setPlaylistData] = useState({})
     const dispatch = useDispatch()
 
     useEffect(() => {
       const fetchDetailPlaylist = async() => {
+        dispatch(actions.loading(true))
         const res = await apis.apiGetDetailPlaylist(pid)
+        dispatch(actions.loading(false))
         console.log(res);
         if (res?.data.err === 0) {
           setPlaylistData(res.data?.data)
@@ -31,7 +33,7 @@ const Playlist = () => {
       fetchDetailPlaylist()
     }, [pid])
   return (
-    <div className='flex gap-8 w-full h-full mt-[30px] pt-10'>
+    <div className='flex relative gap-8 w-full h-full mt-[30px] pt-10 animate-scale-up-center'>
         <div className='flex-none w-[300px] flex flex-col items-center'>
           <div className='w-full relative rounded-lg cursor-pointer overflow-hidden'>
             <img src={playlistData?.thumbnailM} alt="thumbnail" className='object-contain w-full rounded-lg shadow-thumbnail scale-100 hover:scale-110 transition ease-in-out duration-700' />
