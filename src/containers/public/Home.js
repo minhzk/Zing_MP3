@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Slider, Section } from '../../components'
+import { Slider, Section, NewRelease } from '../../components'
 import { useSelector } from 'react-redux'
 
 const Home = () => {
@@ -8,6 +8,7 @@ const Home = () => {
   return (
     <div className='overflow-y-auto w-full'>
       <Slider/>
+      <NewRelease/>
       <Section data={chill}/>
       <Section data={sad}/>
       <Section data={top100}/>

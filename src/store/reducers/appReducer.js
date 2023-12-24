@@ -7,6 +7,7 @@ const initState = {
     top100: {},
     hotAlbum: {},
     isLoading: false,
+    newRelease: {},
 }
 
 const appReducer = (state = initState, action) => {
@@ -19,6 +20,7 @@ const appReducer = (state = initState, action) => {
                 sad: action.homeData?.find(item => item.sectionId === 'hEditorTheme4') || {},
                 top100: action.homeData?.find(item => item.sectionId === 'h100') || {},
                 hotAlbum: action.homeData?.find(item => item.sectionId === 'hAlbum') || {},
+                newRelease: action.homeData?.find(item => item.sectionType === 'new-release') || {},
 
             }
         case actionTypes.LOADING:

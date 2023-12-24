@@ -9,7 +9,7 @@ module.exports = {
                 'main-300': '#CED9D9',
                 'main-400': '#C0D8D8',
                 'main-500': '#0E8080',
-                'overlay-40': 'rgba(0,0,0,0.5)'
+                'overlay-40': 'rgba(0,0,0,0.5)',
             },
             colors: {
                 'main-100': '#E7ECEC',
@@ -21,6 +21,7 @@ module.exports = {
                 'text-hover': '#0f7070',
                 'text-secondary': '#696969',
                 'song-item-action': '#32323D80',
+                'border-primary': 'rgba(0,0,0,0.1)'
             },
             keyframes: {
                 'slide-right': {

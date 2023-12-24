@@ -10,6 +10,8 @@ export { default as Section } from './Section'
 export { default as AudioLoading } from './AudioLoading' 
 export { default as SongLoading } from './SongLoading' 
 export { default as Loading } from './Loading' 
+export { default as SongItem } from './SongItem' 
+export { default as NewRelease } from './NewRelease' 
 
 
 
