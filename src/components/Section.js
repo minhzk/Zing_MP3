@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 const Section = ({ data }) => {
   const navigate = useNavigate();
-  console.log(data);
   return (
     <div className="mt-12">
       <div className="mb-5 flex items-center justify-between">
@@ -30,24 +29,26 @@ const Section = ({ data }) => {
                 alt="thumbnail"
                 className="h-auto w-full rounded-[5px]"
               />
-              <span
-                className={`font-semibold ${
-                  data?.options?.hideTitle ? "hidden" : "block"
-                }`}
-              >
-                {item?.title.length > 26
-                  ? `${item?.title.slice(0, 24)}... `
-                  : item?.title}
-              </span>
-              {data?.sectionId === "h100" ? (
-                <span className="text-sm font-normal text-text-secondary">{item?.artistsNames}</span>
-              ) : (
-                <span className="text-sm font-normal text-text-secondary">
-                  {item?.sortDescription.length > 60
-                    ? `${item?.sortDescription.slice(0, 58)}... `
-                    : item?.sortDescription}
+              <div>
+                <span
+                  className={`font-bold text-black-100 ${
+                    data?.options?.hideTitle ? "hidden" : "block"
+                  }`}
+                >
+                  {item?.title.length > 24
+                    ? `${item?.title.slice(0, 22)}... `
+                    : item?.title}
                 </span>
-              )}
+                {(data?.sectionId === "h100" || data?.sectionId === "hAlbum") ? (
+                  <span className="text-sm font-normal text-text-secondary">{item?.artistsNames}</span>
+                ) : (
+                  <span className="text-sm font-normal text-text-secondary">
+                    {item?.sortDescription.length > 60
+                      ? `${item?.sortDescription.slice(0, 58)}... `
+                      : item?.sortDescription}
+                  </span>
+                )}
+              </div>
             </div>
           ))}
       </div>

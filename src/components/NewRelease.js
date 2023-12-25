@@ -11,7 +11,6 @@ const NewRelease = () => {
     if (activeMode === 0) setSongs(newRelease?.items?.all)
     else if (activeMode === 1) setSongs(newRelease?.items?.vPop)
     else setSongs(newRelease?.items?.others)
-    console.log('active', activeMode);
   }, [activeMode, newRelease])
   return (
     <div className="mt-12 flex flex-col gap-5">
@@ -53,7 +52,7 @@ const NewRelease = () => {
         </button>
       </div>
       <div className="flex w-full flex-wrap">
-        {songs?.map((item, index) => (
+        {songs?.filter((item, index) => index <= 11)?.map((item) => (
           <SongItem
             thumbnail={item?.thumbnail}
             title={item?.title}

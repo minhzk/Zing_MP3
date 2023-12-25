@@ -131,7 +131,6 @@ const Player = ({ setIsShowRightSidebar }) => {
       100;
     thumbRef.current.style.cssText = `right: ${100 - percent}%`;
     audio.currentTime = (percent * songInfo?.duration) / 100;
-    console.log(curSecond);
   };
 
   const handleNextSong = () => {

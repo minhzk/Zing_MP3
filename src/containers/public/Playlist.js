@@ -23,7 +23,6 @@ const Playlist = () => {
         dispatch(actions.loading(true))
         const res = await apis.apiGetDetailPlaylist(pid)
         dispatch(actions.loading(false))
-        console.log(res);
         if (res?.data.err === 0) {
           setPlaylistData(res.data?.data)
           dispatch(actions.setPlaylist(res.data?.data?.song?.items))
