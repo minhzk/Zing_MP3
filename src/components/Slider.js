@@ -60,7 +60,6 @@ const Slider = () => {
         }
     }
 
-
     return (
         <div className='w-full overflow-hidden'>
             <div className='flex gap-[30px] pt-8'>

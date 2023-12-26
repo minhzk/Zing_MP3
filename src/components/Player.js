@@ -102,9 +102,7 @@ const Player = ({ setIsShowRightSidebar }) => {
         dispatch(actions.play(false));
       }
     };
-
     audio.addEventListener("ended", handleEnded);
-
     return () => {
       audio.removeEventListener("ended", handleEnded);
     };
