@@ -9,7 +9,6 @@ const notActiveStyle = 'py-2 px-[25px] font-semibold text-[15px] text-[#32323D] 
 const activeStyle = 'py-2 px-[25px] font-semibold text-[15px] text-[#0f7070] flex gap-3 items-center'
 
 const SidebarLeft = () => {
-
   const navigate = useNavigate()
   return (
     <div className='flex h-full flex-col bg-main-200'>

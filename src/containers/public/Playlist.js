@@ -28,7 +28,6 @@ const Playlist = () => {
           dispatch(actions.setPlaylist(res.data?.data?.song?.items))
         }
       }
-
       fetchDetailPlaylist()
     }, [pid])
   return (
