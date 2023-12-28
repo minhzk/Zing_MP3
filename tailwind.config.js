@@ -81,6 +81,7 @@ module.exports = {
         screens: {
             '1400': '1400px',
             '1200': '1200px',
+            'laptop': '1224px',
         }
     },
     plugins: [],
