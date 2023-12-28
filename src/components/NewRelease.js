@@ -54,11 +54,12 @@ const NewRelease = () => {
       <div className="flex w-full flex-wrap">
         {songs?.filter((item, index) => index <= 11)?.map((item) => (
           <SongItem
+            key={item?.encodeId}
             thumbnail={item?.thumbnail}
             title={item?.title}
             artistsNames={item?.artistsNames}
             releaseDate={item?.releaseDate}
-            key={item?.encodeId}
+            sid={item?.encodeId}
           />
         ))}
       </div>
