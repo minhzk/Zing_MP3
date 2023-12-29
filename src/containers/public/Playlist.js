@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 import * as apis from '../../apis'
 import moment from 'moment'
 import { Lists, AudioLoading } from '../../components'
@@ -9,9 +9,11 @@ import * as actions from '../../store/actions'
 import { useSelector } from 'react-redux'
 import icons from '../../utils/icons'
 
+
 const {IoIosPlay} = icons
 
 const Playlist = () => {
+    const location = useLocation()
 
     const { pid } = useParams()
     const { isPlaying } = useSelector((state) => state.music);
@@ -30,12 +32,20 @@ const Playlist = () => {
       }
       fetchDetailPlaylist()
     }, [pid])
+
+    useEffect(() => {
+      if ( location?.state?.playAlbum ) {
+        const randomSong = Math.round(Math.random() * playlistData?.song?.items?.length) - 1
+        dispatch(actions.setCurSongId(playlistData?.song?.items[randomSong]?.encodeId))
+        dispatch(actions.play(true))
+      }
+    }, [pid])
   return (
     <div className='flex relative gap-8 w-full h-full mt-[30px] pt-10 animate-scale-up-center'>
         <div className='flex-none w-[300px] flex flex-col items-center'>
           <div className='w-full relative rounded-lg cursor-pointer overflow-hidden'>
             <img src={playlistData?.thumbnailM} alt="thumbnail" className='object-contain w-full rounded-lg shadow-thumbnail scale-100 hover:scale-110 transition ease-in-out duration-700' />
-            <div className={`absolute top-0 left-0 bottom-0 right-0 text-white flex items-center justify-center ${!isPlaying ? 'hover:bg-overlay-40' : 'hover:bg-transparent'}`}>
+            <div className={`absolute top-0 left-0 bottom-0 right-0 text-white flex items-center justify-center ${!isPlaying ? 'hover:bg-overlay-50' : 'hover:bg-transparent'}`}>
               <span 
                 className='p-2 border border-white rounded-full flex items-center justify-center'>
                 {isPlaying ? <AudioLoading/> : <IoIosPlay size={30}/>}

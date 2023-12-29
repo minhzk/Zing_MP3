@@ -9,7 +9,7 @@ module.exports = {
                 'main-300': '#CED9D9',
                 'main-400': '#C0D8D8',
                 'main-500': '#0E8080',
-                'overlay-40': 'rgba(0,0,0,0.5)',
+                'overlay-50': 'rgba(0,0,0,0.5)',
             },
             colors: {
                 'main-100': '#E7ECEC',
@@ -63,13 +63,24 @@ module.exports = {
                         '-webkit-transform': 'scale(1);',
                         transform: 'scale(1);',
                     },
-                  },
+                },
+                'scale-up-section': {
+                '0%': {
+                    '-webkit-transform': 'scale(1);',
+                    transform: 'scale(1);',
+                },
+                '100%': {
+                    '-webkit-transform': 'scale(1.1);',
+                    transform: 'scale(1.1);',
+                },
+                },
             },
             animation: {
                 'slide-right': 'slide-right 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;',
                 'slide-left': 'slide-left 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;',
                 'slide-left2': 'slide-left2 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;',
                 'scale-up-center': 'scale-up-center 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;',
+                'scale-up-section': 'scale-up-section 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;',
             },
             flex: {
                 '4': '4 4 0%'
