@@ -83,7 +83,8 @@ module.exports = {
                 'scale-up-section': 'scale-up-section 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;',
             },
             flex: {
-                '4': '4 4 0%'
+                '4': '4 4 0%',
+                '6': '6 6 0%',
             },
             boxShadow: {
                 'thumbnail': '0 5px 8px 0 rgba(0, 0, 0, .2)',

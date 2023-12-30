@@ -206,7 +206,7 @@ const Player = ({ setIsShowRightSidebar }) => {
             <RiSkipBackFill size={21} />
           </span>
           <span
-            className="flex cursor-pointer items-center justify-normal rounded-full border border-gray-700 pl-[9px] pr-[7px] pt-2 pb-2 hover:border-text-hover hover:text-text-hover"
+            className="flex cursor-pointer items-center justify-normal rounded-full border border-gray-700 p-2 hover:border-text-hover hover:text-text-hover"
             onClick={handleTogglePlayMusic}
           >
             {!isLoadedSource ? (
