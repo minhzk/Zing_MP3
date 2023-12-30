@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { Slider, Section, NewRelease } from '../../components'
+import React from 'react'
+import { Slider, Section, NewRelease, ChartSection } from '../../components'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -13,6 +13,7 @@ const Home = () => {
       <NewRelease/>
       <Section data={chill}/>
       <Section data={sad}/>
+      <ChartSection/>
       <Section data={top100}/>
       <Section data={hotAlbum}/>
       <div className='flex items-center w-full mt-7'>
