@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    .font-outline-red {
+      -webkit-text-stroke: 1px #e35050;;
+    }
+    .font-outline-blue {
+      -webkit-text-stroke: 1px #4a90e2;
+    }
+    .font-outline-green {
+        -webkit-text-stroke: 1px #50e3c2;
+      }
+  }

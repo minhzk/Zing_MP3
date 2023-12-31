@@ -85,6 +85,8 @@ module.exports = {
             flex: {
                 '4': '4 4 0%',
                 '6': '6 6 0%',
+                '3': '3 3 0%',
+                '7': '7 7 0%',
             },
             boxShadow: {
                 'thumbnail': '0 5px 8px 0 rgba(0, 0, 0, .2)',
