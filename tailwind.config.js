@@ -9,7 +9,9 @@ module.exports = {
                 'main-300': '#CED9D9',
                 'main-400': '#C0D8D8',
                 'main-500': '#0E8080',
+                'main-600': '#E7EDED',
                 'overlay-50': 'rgba(0,0,0,0.5)',
+
             },
             colors: {
                 'main-100': '#E7ECEC',
@@ -17,6 +19,7 @@ module.exports = {
                 'main-300': '#CED9D9',
                 'main-400': '#C0D8D8',
                 'main-500': '#0E8080',
+                'main-600': '#E7EDED',
                 'black-100': '#32323D',
                 'text-hover': '#0f7070',
                 'text-secondary': '#696969',
