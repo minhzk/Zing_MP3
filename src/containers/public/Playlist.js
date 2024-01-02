@@ -21,6 +21,7 @@ const Playlist = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
+      dispatch(actions.setCurPlaylistId(pid))
       const fetchDetailPlaylist = async() => {
         dispatch(actions.loading(true))
         const res = await apis.apiGetDetailPlaylist(pid)
@@ -64,7 +65,7 @@ const Playlist = () => {
             <span>{`${Math.round(playlistData?.like / 1000)}K người yêu thích`}</span>
           </div>
         </div>
-        <Scrollbars style={{ width: '100%', height: "70vh" }}>
+        <Scrollbars autoHide style={{ width: '100%', height: "70vh" }}>
           <div className='flex-auto mb-40'>
             <span className='text-sm mb-[10px]'>
               <span className='text-text-secondary'>Lời tựa </span>
