@@ -4,7 +4,7 @@ import 'moment/locale/vi'
 import { useDispatch } from 'react-redux'
 import * as actions from '../store/actions'
 
-const SongItem = ({thumbnail, title, artistsNames, sid, releaseDate, order, percent}) => {
+const SongItem = ({thumbnail, title, artistsNames, sid, releaseDate, order, percent, style}) => {
 
   const dispatch = useDispatch()
   return (
@@ -13,7 +13,7 @@ const SongItem = ({thumbnail, title, artistsNames, sid, releaseDate, order, perc
       dispatch(actions.setCurSongId(sid))
       dispatch(actions.play(true))
     }}
-    className={`w-full flex-auto p-[10px] flex rounded-md cursor-pointer justify-between items-center ${order ? 'hover:bg-[hsla(0,0%,100%,0.5)] bg-[hsla(0,0%,100%,.07)]' : 'hover:bg-main-200'}`}>
+    className={`w-full flex-auto p-[10px] flex rounded-md cursor-pointer justify-between items-center ${style || 'hover:bg-main-200'}`}>
         <div className='flex items-center'>
           {order && <span className={`mr-[15px] text-[34px] text-transparent font-[900] ${order === 1 ? 'font-outline-blue' : order === 2 ? 'font-outline-green' : 'font-outline-red'}`}>{order}</span>}
           <img src={thumbnail} alt="thumbnail" className='mr-[10px] w-[60px] h-[60px] object-cover rounded-md'/>

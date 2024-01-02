@@ -1,6 +1,6 @@
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Home, Login, Public, Personal, Playlist, WeekRank,  } from './containers/public';
+import { Home, Login, Public, Personal, Playlist, WeekRank, ZingChart  } from './containers/public';
 import { Routes, Route } from 'react-router-dom';
 import path from './utils/path';
 import { useEffect } from 'react';
@@ -32,6 +32,10 @@ function App() {
                         <Route
                             path={path.WEEKRANK__TITLE__PID}
                             element={<WeekRank />}
+                        />
+                        <Route
+                            path={path.ZING_CHART}
+                            element={<ZingChart />}
                         />
 
                         <Route path={path.STAR} element={<Home />} />
