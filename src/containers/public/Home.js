@@ -14,8 +14,6 @@ const Home = () => {
       <Section data={chill}/>
       <Section data={sad}/>
       <ChartSection/>
-      <Section data={top100}/>
-      <Section data={hotAlbum}/>
       <div className='flex items-center w-full mt-7'>
         {weekChart?.map((item, index) => (
           <Link to={item?.link?.split('.')[0]} key={item?.link} className={`flex-1 ${index === 1 && 'px-7'}`}>
@@ -23,6 +21,8 @@ const Home = () => {
           </Link>
         ))}
       </div>
+      <Section data={top100}/>
+      <Section data={hotAlbum}/>
 
       <div className='w-full h-[500px]'></div>
     </div>
