@@ -11,18 +11,25 @@ const SidebarRight = () => {
 
   const [isRecent, setIsRecent] = useState(false)
   const [playlist, setPlaylist] = useState()
-  const { curSongData, curPlaylistId, isPlaying } = useSelector(state => state.music)
+  const { curSongData, curPlaylistId, isPlaying, recentSongs, curSongId } = useSelector(state => state.music)
   // console.log(curSongData);
+  const fetchDetailPlaylist = async () => {
+    const res = await apiGetDetailPlaylist(curPlaylistId)
+    if(res?.data?.err === 0) setPlaylist(res?.data?.data)
+  }
+  useEffect(() => {
+    curPlaylistId && fetchDetailPlaylist()
+  }, [])
 
   useEffect(() => {
-    const fetchDetailPlaylist = async () => {
-      const res = await apiGetDetailPlaylist(curPlaylistId)
-      if(res?.data?.err === 0) setPlaylist(res?.data?.data)
-      console.log(res);
-    }
-
     if (curPlaylistId && isPlaying) fetchDetailPlaylist()
   }, [curPlaylistId, isPlaying])
+
+  useEffect(() => {
+    curSongId && setIsRecent(false)
+  }, [curSongId])
+
+  console.log(recentSongs);
   return (
     <div className='flex flex-col text-xs w-full'>
       <div className='h-[70px] flex-none py-[14px] px-2 flex items-center justify-between gap-16'>
@@ -38,7 +45,27 @@ const SidebarRight = () => {
         </div>
         <span className='p-2 rounded-full opacity-100 hover:opacity-80 cursor-pointer bg-main-200'><BsTrash size={14}/></span>
       </div>
-      <div className='w-full flex flex-col px-2 '>
+      {isRecent 
+      ? 
+      <div className='w-full flex flex-col px-2'>
+        <Scrollbars autoHide style={{ width: '100%', height: "80vh" }}>
+          {recentSongs && <div className='flex flex-col mb-10'>
+              {recentSongs?.map(item => (
+                <SongItem
+                  key={item?.sid}
+                  thumbnail={item?.thumbnail}
+                  title = {item?.title}
+                  artistsNames={item?.artistsNames}
+                  sid={item?.sid}
+                  sm
+                />
+              ))}
+            </div>
+          }
+        </Scrollbars>
+      </div>
+      : 
+      <div className='w-full flex flex-col px-2'>
         <SongItem
           thumbnail={curSongData?.thumbnail}
           title = {curSongData?.title}
@@ -71,6 +98,7 @@ const SidebarRight = () => {
           </div>}
         </Scrollbars>
       </div>
+      }
     </div>
   )
 }

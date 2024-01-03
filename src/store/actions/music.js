@@ -35,6 +35,11 @@ export const setCurPlaylistId =  (pid) => ({
     pid
 })
 
+export const setRecent =  (data) => ({
+    type: actionTypes.SET_RECENT,
+    data
+})
+
 // export const fetchDetailPlaylist = (pid) => async(dispatch) => {
 //     try {
 //         const res = await apis.apiGetDetailPlaylist(pid)

@@ -12,6 +12,7 @@ const SongItem = ({thumbnail, title, artistsNames, sid, releaseDate, order, perc
     onClick={() => {
       dispatch(actions.setCurSongId(sid))
       dispatch(actions.play(true))
+      dispatch(actions.setRecent({thumbnail, title, sid, artistsNames}))
     }}
     className={`w-full flex-auto p-[10px] flex rounded-md cursor-pointer justify-between items-center ${style || 'hover:bg-main-200'}`}>
         <div className='flex items-center'>
