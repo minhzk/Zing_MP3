@@ -52,6 +52,7 @@ const Slider = () => {
             dispatch(actions.setCurSongId(item.encodeId))
             dispatch(actions.play(true))
             dispatch(actions.setPlaylist(null))
+            dispatch(actions.setRecent({thumbnail: item?.thumbnail, title: item?.title, sid: item?.encodeId, artistsNames: item?.artistsNames}))
         } else if (item?.type === 4) {
             const playlistPath = item?.link.split('.')[0]
             navigate(playlistPath)
