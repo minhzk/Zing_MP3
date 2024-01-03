@@ -5,4 +5,8 @@ export { default as Personal } from './Personal';
 export { default as Playlist } from './Playlist';
 export { default as WeekRank } from './WeekRank';
 export { default as ZingChart } from './ZingChart';
+export { default as Search } from './Search';
+export { default as SearchAll } from './SearchAll';
+export { default as SearchSongs } from './SearchSongs';
+
 

@@ -1,6 +1,6 @@
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Home, Login, Public, Personal, Playlist, WeekRank, ZingChart  } from './containers/public';
+import { Home, Login, Public, Personal, Playlist, WeekRank, ZingChart, Search, SearchAll, SearchSongs  } from './containers/public';
 import { Routes, Route } from 'react-router-dom';
 import path from './utils/path';
 import { useEffect } from 'react';
@@ -37,6 +37,19 @@ function App() {
                             path={path.ZING_CHART}
                             element={<ZingChart />}
                         />
+                        <Route
+                            path={path.SEARCH}
+                            element={<Search />}
+                        >
+                            <Route
+                                path={path.ALL}
+                                element={<SearchAll />}
+                            />
+                            <Route
+                                path={path.SONG}
+                                element={<SearchSongs />}
+                            />
+                        </Route>
 
                         <Route path={path.STAR} element={<Home />} />
                     </Route>
