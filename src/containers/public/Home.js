@@ -11,8 +11,8 @@ const Home = () => {
     <div className='overflow-y-auto w-full'>
       <Slider/>
       <NewRelease/>
-      <Section data={chill}/>
-      <Section data={sad}/>
+      <Section data={chill} items={chill?.items}/>
+      <Section data={sad} items={sad?.items}/>
       <ChartSection/>
       <div className='flex items-center w-full mt-7'>
         {weekChart?.map((item, index) => (
@@ -21,8 +21,8 @@ const Home = () => {
           </Link>
         ))}
       </div>
-      <Section data={top100}/>
-      <Section data={hotAlbum}/>
+      <Section data={top100} artists items={top100?.items}/>
+      <Section data={hotAlbum} artists items={hotAlbum?.items}/>
 
       <div className='w-full h-[500px]'></div>
     </div>
