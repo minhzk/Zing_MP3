@@ -4,7 +4,7 @@ import icons from '../utils/icons'
 
 const { IoMdHeartEmpty, IoMdHeart, IoIosPlay, BsThreeDots } = icons
 
-const Section = ({ data }) => {
+const Section = ({ data, artists, items }) => {
   const navigate = useNavigate();
   return (
     <div className="mt-12">
@@ -16,8 +16,8 @@ const Section = ({ data }) => {
       </div>
       <div className="flex flex-auto items-start justify-between gap-[28px]">
         {data &&
-          data?.items?.length > 0 &&
-          data.items.map((item, index) => (
+          items.length > 0 &&
+          items.map((item, index) => (
             <div
               key={item.encodeId}
               onClick={() => {
@@ -57,7 +57,7 @@ const Section = ({ data }) => {
                     ? `${item?.title.slice(0, 22)}... `
                     : item?.title}
                 </span>
-                {(data?.sectionId === "h100" || data?.sectionId === "hAlbum") ? (
+                { artists ? (
                   <span className="text-sm font-normal text-text-secondary">{item?.artistsNames}</span>
                 ) : (
                   <span className="text-sm font-normal text-text-secondary">
