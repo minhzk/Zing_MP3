@@ -4,13 +4,15 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const Home = () => {
-  const {chill, sad, top100, hotAlbum, weekChart} = useSelector(state => state.app)
+  const {chill, sad, top100, hotAlbum, weekChart, remix, topYear} = useSelector(state => state.app)
   // console.log(weekChart);
 
   return (
     <div className='overflow-y-auto w-full'>
       <Slider/>
       <NewRelease/>
+      <Section data={remix} items={remix?.items}/>
+      <Section data={topYear} items={topYear?.items}/>
       <Section data={chill} items={chill?.items}/>
       <Section data={sad} items={sad?.items}/>
       <ChartSection/>

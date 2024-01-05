@@ -6,11 +6,14 @@ const initState = {
     sad: {},
     top100: {},
     hotAlbum: {},
+    remix: {},
+    topYear: {},
     isLoading: false,
     newRelease: {},
     weekChart: [],
     chart: {},
     rank: [],
+
 }
 
 const appReducer = (state = initState, action) => {
@@ -23,6 +26,8 @@ const appReducer = (state = initState, action) => {
                 sad: action.homeData?.find(item => item.sectionId === 'hEditorTheme4') || {},
                 top100: action.homeData?.find(item => item.sectionId === 'h100') || {},
                 hotAlbum: action.homeData?.find(item => item.sectionId === 'hAlbum') || {},
+                remix: action.homeData?.find(item => item.sectionId === 'hEditorTheme3') || {},
+                topYear: action.homeData?.find(item => item.sectionId === 'hArtistTheme') || {},
                 newRelease: action.homeData?.find(item => item.sectionType === 'new-release') || {},
                 weekChart: action.homeData?.find(item => item.sectionType === 'weekChart')?.items || [],
                 chart: action.homeData?.find(item => item.sectionId === 'hZC')?.chart || {},
