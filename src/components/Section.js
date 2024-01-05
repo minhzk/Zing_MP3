@@ -65,8 +65,8 @@ const Section = ({ data, artists, items }) => {
                   <span className="text-sm font-normal text-text-secondary">{item?.artistsNames}</span>
                 ) : (
                   <span className="text-sm font-normal text-text-secondary">
-                    {item?.sortDescription.length > 60
-                      ? `${item?.sortDescription.slice(0, 58)}... `
+                    {item?.sortDescription.length > 54
+                      ? `${item?.sortDescription.slice(0, 54)}... `
                       : item?.sortDescription}
                   </span>
                 )}
