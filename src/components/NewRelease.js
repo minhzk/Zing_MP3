@@ -1,6 +1,7 @@
 import React, { useState, memo, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { SongItem } from "./";
+import { IoIosArrowForward } from "react-icons/io";
 
 const NewRelease = () => {
   const { newRelease } = useSelector((state) => state.app);
@@ -18,9 +19,12 @@ const NewRelease = () => {
         <h3 className="text-xl font-bold text-black-100">
           {newRelease?.title}
         </h3>
-        <span className="text-[13px] font-medium text-text-secondary">
-          TẤT CẢ
-        </span>
+        <div className="text-text-secondary flex gap-1 cursor-pointer">
+          <span className="text-[13px] font-medium ">
+            TẤT CẢ
+          </span>
+          <span className="flex justify-center items-center pt-[1px]"><IoIosArrowForward size={20}/></span>
+        </div>
       </div>
       <div className="flex items-center gap-5 text-xs font-normal ">
         <button

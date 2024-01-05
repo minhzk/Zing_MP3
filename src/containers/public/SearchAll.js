@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { handleNumber } from '../../utils/fn'
 import { SongItem, List, Section, Artists } from '../../components'
+import { IoIosArrowForward } from 'react-icons/io'
 
 const SearchAll = () => {
 
@@ -36,7 +37,15 @@ const SearchAll = () => {
         </div>
       </div>
       <div className='flex flex-col'>
-        <h3 className='text-xl font-bold mb-5'>Bài Hát</h3>
+        <div className='flex items-center justify-between'>
+          <h3 className='text-xl font-bold mb-5'>Bài Hát</h3>
+          <div className="text-text-secondary flex gap-1 cursor-pointer">
+            <span className="text-[13px] font-medium ">
+              TẤT CẢ
+            </span>
+            <span className="flex justify-center items-center pt-[1px]"><IoIosArrowForward size={20}/></span>
+          </div>
+        </div>
         <div className='flex justify-between flex-wrap'>
             {searchData?.songs?.filter((item, index) => index < 6)?.map((item, index) => (
               <div key={item.encodeId} className={`flex-auto w-[45%] ${index % 2 === 0 ? 'pr-4' : 'pl-4'}`}>

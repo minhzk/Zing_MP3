@@ -44,9 +44,9 @@ const Playlist = () => {
   return (
     <div className='flex relative gap-8 w-full h-full mt-[30px] pt-10 animate-scale-up-center'>
         <div className='flex-none w-[300px] flex flex-col items-center'>
-          <div className='w-full relative rounded-lg cursor-pointer overflow-hidden'>
-            <img src={playlistData?.thumbnailM} alt="thumbnail" className='object-contain w-full rounded-lg shadow-thumbnail scale-100 hover:scale-110 transition ease-in-out duration-700' />
-            <div className={`absolute top-0 left-0 bottom-0 right-0 text-white flex items-center justify-center ${!isPlaying ? 'hover:bg-overlay-50' : 'hover:bg-transparent'}`}>
+          <div className='w-full relative rounded-lg cursor-pointer overflow-hidden group'>
+            <img src={playlistData?.thumbnailM} alt="thumbnail" className='object-contain w-full rounded-lg shadow-thumbnail scale-100 group-hover:scale-110 transition ease-in-out duration-700' />
+            <div className={`absolute inset-0 z-20 text-white flex items-center justify-center ${!isPlaying ? 'group-hover:bg-overlay-50' : 'hover:bg-transparent'}`}>
               <span 
                 className='p-2 border border-white rounded-full flex items-center justify-center'>
                 {isPlaying ? <AudioLoading/> : <IoIosPlay size={30}/>}
