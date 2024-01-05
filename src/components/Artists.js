@@ -5,8 +5,8 @@ import { AiOutlineUserAdd } from 'react-icons/ai'
 const Artists = ({name, thumbnail, totalFollow}) => {
   return (
     <div className='w-1/5 flex flex-col items-center justify-center'>
-        <img src={thumbnail} alt="singer" className='w-[204px] h-[204px] object-contain rounded-full'/>
-        <span className='text-sm font-medium text-black-100 mt-[15px] mb-1'>{name}</span>
+        <img src={thumbnail} alt="singer" className='w-[204px] h-[204px] object-contain rounded-full cursor-pointer'/>
+        <span className='text-sm font-medium text-black-100 mt-[15px] mb-1 cursor-pointer'>{name}</span>
         <span className='text-text-secondary text-xs'>{`${handleNumber(totalFollow)} quan tâm`}</span>
         <button 
             type='button'

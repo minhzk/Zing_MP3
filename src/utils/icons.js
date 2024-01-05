@@ -3,7 +3,7 @@ import { RiPieChartLine, RiSkipBackFill, RiSkipForwardFill  } from "react-icons/
 import { TbChartArcs } from "react-icons/tb"
 import { BsArrowLeft, BsArrowRight, BsThreeDots, BsTrash  } from "react-icons/bs";
 import { GoSearch } from "react-icons/go";
-import { IoMdHeartEmpty, IoMdHeart, IoIosPause, IoIosPlay    } from "react-icons/io";
+import { IoMdHeartEmpty, IoMdHeart, IoIosPause, IoIosPlay, IoIosArrowForward } from "react-icons/io";
 import { PiRepeatLight, PiShuffleLight, PiRepeatOnceLight  } from "react-icons/pi";
 import { LuMusic, LuDot, LuListMusic, LuVolume1, LuVolume2, LuVolumeX  } from "react-icons/lu";
 import { AiOutlineUserAdd } from "react-icons/ai";
@@ -32,7 +32,8 @@ const icons = {
     LuVolumeX,
     LuVolume1,
     BsTrash,
-    AiOutlineUserAdd
+    AiOutlineUserAdd,
+    IoIosArrowForward
 }
 
 export default icons

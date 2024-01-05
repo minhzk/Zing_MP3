@@ -24,16 +24,16 @@ const List = ({songData, isHidePlaylist}) => {
         dispatch(actions.setRecent({thumbnail: songData?.thumbnail, title: songData?.title, sid: songData?.encodeId, artistsNames: songData?.artistsNames}))
     }}
     >
-        <div className='flex items-center gap-2 flex-1'>
+        <div className='flex items-center gap-2 flex-[5]'>
             {!isHidePlaylist && <span className='text-song-item-action'><LuMusic size={15}/></span>}
             <img src={songData?.thumbnail} alt="thumbnail" className='w-10 h-10 object-cover rounded-md' />
             <span className='flex flex-col w-full'>
-                <span className='text-sm font-medium text-black-100'>{songData?.title?.length > 32 ? `${songData?.title?.slice(0, 30)}...` : songData?.title}</span>
+                <span className='text-sm font-medium text-black-100'>{songData?.title?.length > 34 ? `${songData?.title?.slice(0, 34)}...` : songData?.title}</span>
                 <span className='text-text-secondary font-normal'>{songData?.artistsNames}</span>
             </span>
         </div>
-        {!isHidePlaylist && <div className='flex-1 flex items-center justify-start text-song-item-action'>
-            {songData?.album?.title?.length > 42 ? `${songData?.album?.title?.slice(0, 30)}...` : songData?.album?.title}
+        {!isHidePlaylist && <div className='flex-[5] flex items-center justify-start text-song-item-action'>
+            {songData?.album?.title?.length > 46 ? `${songData?.album?.title?.slice(0, 46)}...` : songData?.album?.title}
         </div>
         }
         <div className='flex-1 flex justify-end text-song-item-action font-normal'>
