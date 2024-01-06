@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate, createSearchParams } from 'react-router-dom'
 import path from '../utils/path'
 
-const { GoSearch }  = icons
+const { GoSearch, IoMdClose }  = icons
 
 const Search = () => {
 
@@ -29,7 +29,8 @@ const Search = () => {
 
 
   return (
-    <div className='w-full flex items-center'>
+    <div className='w-full flex relative items-center'>
+      {keyword && <span onClick={() => setKeyword('')} className='absolute right-4 text-text-secondary cursor-pointer p-1'><IoMdClose size={20} /></span>}
       <span className='h-10 pl-4 bg-[#DDE4E4] flex items-center justify-center rounded-l-[20px] text-gray-500'>
         <GoSearch size={20}/>
       </span>

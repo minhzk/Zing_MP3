@@ -13,6 +13,7 @@ const initState = {
     weekChart: [],
     chart: {},
     rank: [],
+    
 
 }
 
