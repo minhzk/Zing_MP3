@@ -60,13 +60,14 @@ const SearchAll = () => {
       </div>
       <div className='flex flex-col'>
         <h3 className='text-xl font-bold mb-5'>Nghệ Sĩ/OA</h3>
-        <div className='flex justify-between items-start'>
+        <div className='flex'>
             {searchData?.artists?.filter((item, index) => index < 5)?.map((item) => (
               <Artists
                 key={item?.id}
                 thumbnail={item?.thumbnail}
                 name={item?.name}
                 totalFollow={item?.totalFollow}
+                link={item?.link}
               />
             ))}
         </div>

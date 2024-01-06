@@ -16,8 +16,8 @@ const Header = () => {
                 <Search/>
             </div>
         </div>
-        <div>
-            login
+        <div className='bg-main-200 rounded-full py-1 px-2'>
+            Login
         </div>
     </div>
   )
