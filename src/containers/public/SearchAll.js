@@ -7,7 +7,6 @@ import { IoIosArrowForward } from 'react-icons/io'
 const SearchAll = () => {
 
   const { searchData } = useSelector(state => state.music)
-  console.log(searchData);
   return (
     <div className='w-full flex flex-col mb-[400px] gap-[60px]'>
       <div className='flex flex-col'>
@@ -49,7 +48,7 @@ const SearchAll = () => {
         <div className='flex justify-between flex-wrap'>
             {searchData?.songs?.filter((item, index) => index < 6)?.map((item, index) => (
               <div key={item.encodeId} className={`flex-auto w-[45%] ${index % 2 === 0 ? 'pr-4' : 'pl-4'}`}>
-                <List songData={item} isHidePlaylist />
+                <List songData={item} isHidePlaylist isHideIcon />
               </div>
             ))}
         </div>

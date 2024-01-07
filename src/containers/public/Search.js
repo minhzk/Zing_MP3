@@ -9,7 +9,6 @@ const activeStyle = 'px-4 hover:text-text-hover cursor-pointer border-b-2 border
 
 const Search = () => {
   const {keyword} = useSelector(state => state.music)
-  console.log(keyword);
   return (
     <div className='w-full'>
       <div className='flex h-[50px] mb-7 items-center text-sm border-b border-[rgba(0,0,0,.1)] pb-1 mx-[-59px] pl-[59px]'>

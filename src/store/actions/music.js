@@ -64,3 +64,25 @@ export const search = (keyword) => async (dispatch) => {
     }
 }
 
+export const getSearchSong = (pid) => async (dispatch) => {
+    try {
+        const res = await apis.apiGetDetailPlaylist(pid)
+        if (res.data.err === 0) {
+            dispatch({
+                type: actionTypes.PLAYLIST,
+                songs: res.data.data.song.items
+            })
+        } else {
+            dispatch({
+                type: actionTypes.PLAYLIST,
+                songs: null
+            }) 
+        }
+    } catch (error) {
+        dispatch({
+            type: actionTypes.PLAYLIST,
+            songs: null
+        })
+    }
+}
+
