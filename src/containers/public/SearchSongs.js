@@ -5,11 +5,11 @@ import * as actions from '../../store/actions'
 
 const SearchSongs = () => {
   const { searchData, songs } = useSelector(state => state.music)
-  // const dispatch = useDispatch()
-  // // console.log(searchData);
-  // useEffect(() => {
-  //   dispatch(actions.getSearchSong(searchData?.top?.playlistId))
-  // }, [searchData])
+  const dispatch = useDispatch()
+  // console.log(searchData);
+  useEffect(() => {
+    dispatch(actions.getSearchSong(searchData?.top?.playlistId))
+  }, [searchData])
   return (
     <div className='flex flex-col mb-20'>
         <div className='flex items-center justify-between'>
