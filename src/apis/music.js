@@ -55,3 +55,37 @@ export const apiSearch = (keyword) =>
             reject(error);
         }
     });
+
+export const apiGetArtistSongs = (singerId) =>
+    new Promise(async (resolve, reject) => {
+        try {
+            const res = await axios({
+                url: '/artistsong',
+                method: 'get',
+                params: { 
+                    id: singerId,
+                    page: 1,
+                    count: 50,
+                 },
+            });
+            resolve(res);
+        } catch (error) {
+            reject(error);
+        }
+    });
+    
+export const apiGetArtist = (alias) =>
+    new Promise(async (resolve, reject) => {
+        try {
+            const res = await axios({
+                url: '/artist',
+                method: 'get',
+                params: { 
+                    name: alias,
+                 },
+            });
+            resolve(res);
+        } catch (error) {
+            reject(error);
+        }
+    });

@@ -8,19 +8,19 @@ const SearchSongs = () => {
   const dispatch = useDispatch()
   // console.log(searchData);
   useEffect(() => {
-    dispatch(actions.getSearchSong(searchData?.top?.playlistId))
+    dispatch(actions.getSearchSong(searchData?.top?.id))
   }, [searchData])
   return (
     <div className='flex flex-col mb-20'>
-        <div className='flex items-center justify-between'>
-          <h3 className='text-xl font-bold mb-5'>Bài Hát</h3>
-        </div>
-        <div className='flex justify-between flex-col'>
-            {songs?.map(item=> (
-                <List songData={item} key={item.encodeId} isHideIcon />
-            ))}
-        </div>
+      <div className='flex items-center justify-between'>
+        <h3 className='text-xl font-bold mb-5'>Bài Hát</h3>
       </div>
+      <div className='flex justify-between flex-col'>
+          {songs?.map(item=> (
+              <List songData={item} key={item.encodeId} isHideIcon />
+          ))}
+      </div>
+    </div>
   )
 }
 

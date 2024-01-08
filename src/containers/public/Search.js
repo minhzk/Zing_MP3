@@ -13,7 +13,7 @@ const Search = () => {
     <div className='w-full'>
       <div className='flex h-[50px] mb-7 items-center text-sm border-b border-[rgba(0,0,0,.1)] pb-1 mx-[-59px] pl-[59px]'>
         <span className='text-2xl font-bold pr-6 border-r border-[rgba(0,0,0,.1)] '>Kết Quả Tìm Kiếm</span>
-        <div className='flex items-center font-medium text-black-100'>
+        <div className='flex items-center font-medium text-black-100 gap-3'>
           {searchMenu?.map(item => (
             <NavLink
               key={item?.path}

@@ -4,21 +4,21 @@ import icons from '../utils/icons'
 
 const { IoMdHeartEmpty, IoMdHeart, IoIosPlay, BsThreeDots, IoIosArrowForward } = icons
 
-const Section = ({ data, artists, items }) => {
+const Section = ({ data, artists, items, number, wrap, notShowAll }) => {
   const navigate = useNavigate();
   return (
-    <div className="mt-12">
+    <div className={`${!notShowAll && 'mt-12'}`}>
       <div className="mb-5 flex items-center justify-between">
         <h3 className="text-xl font-bold text-black-100">{data?.title}</h3>
-        <div className="text-text-secondary flex gap-1 cursor-pointer">
+        {!notShowAll && <div className="text-text-secondary flex gap-1 cursor-pointer">
           <span className="text-[13px] font-medium ">
             TẤT CẢ
           </span>
           <span className="flex justify-center items-center pt-[1px]"><IoIosArrowForward size={20}/></span>
-        </div>
+        </div>}
 
       </div>
-      <div className="flex flex-auto items-start justify-between gap-[28px]">
+      <div className={`flex flex-auto items-start gap-[28px] ${wrap && 'flex-wrap'}`}>
         {data &&
           items?.length > 0 &&
           items?.map((item, index) => (
@@ -27,9 +27,8 @@ const Section = ({ data, artists, items }) => {
               onClick={() => {
                 navigate(item?.link.split(".")[0], { state: { playAlbum: false}});
               }}
-              className={`flex w-1/5 cursor-pointer flex-col gap-2  ${
-                index <= 4 ? "block" : "hidden"
-              }`}
+              className={`flex cursor-pointer flex-col gap-2 ${wrap ? 'w-[18%]' : 'w-1/5'}
+              ${index <= (number || 4) ? "block" : "hidden"}`}
             >
               <div className="relative w-full overflow-hidden rounded-[5px] group">
                 <div className="absolute inset-0 z-20 group-hover:bg-overlay-50 rounded-[5px] text-white flex items-center justify-center gap-7">
@@ -53,12 +52,12 @@ const Section = ({ data, artists, items }) => {
               </div>
               <div>
                 <span
-                  className={`font-bold text-black-100 ${
+                  className={`font-bold text-black-100 text-sm ${
                     data?.options?.hideTitle ? "hidden" : "block"
                   }`}
                 >
-                  {item?.title.length > 24
-                    ? `${item?.title.slice(0, 22)}... `
+                  {item?.title.length > 26
+                    ? `${item?.title.slice(0, 26)}... `
                     : item?.title}
                 </span>
                 { artists ? (
