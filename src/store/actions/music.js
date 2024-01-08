@@ -64,13 +64,13 @@ export const search = (keyword) => async (dispatch) => {
     }
 }
 
-export const getSearchSong = (pid) => async (dispatch) => {
+export const getSearchSong = (singerId) => async (dispatch) => {
     try {
-        const res = await apis.apiGetDetailPlaylist(pid)
+        const res = await apis.apiGetArtistSongs(singerId)
         if (res.data.err === 0) {
             dispatch({
                 type: actionTypes.PLAYLIST,
-                songs: res.data.data.song.items
+                songs: res.data.data.items
             })
         } else {
             dispatch({
