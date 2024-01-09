@@ -16,7 +16,6 @@ const Section = ({ data, artists, items, number, wrap, notShowAll }) => {
           </span>
           <span className="flex justify-center items-center pt-[1px]"><IoIosArrowForward size={20}/></span>
         </div>}
-
       </div>
       <div className={`flex flex-auto items-start gap-[28px] ${wrap && 'flex-wrap'}`}>
         {data &&

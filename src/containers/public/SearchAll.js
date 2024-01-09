@@ -28,7 +28,7 @@ const SearchAll = () => {
                 title={item?.title}
                 sid={item?.encodeId}
                 artistsNames={item?.artistsNames}
-                size='w-[84px] h-[84px]'
+                size='max-w-[84px]'
                 song
               />
             </div>

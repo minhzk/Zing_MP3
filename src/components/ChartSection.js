@@ -126,13 +126,13 @@ const ChartSection = () => {
                         {data && <Line ref={chartRef} data={data} options={options}/>}
                         <div style={{top: tooltipState.top, left: tooltipState.left, opacity: tooltipState.opacity, position: 'absolute'}}>
                             <SongItem 
-                                key={rank?.find(item => item.encodeId === selected)?.encodeId}
-                                thumbnail={rank?.find(item => item.encodeId === selected)?.thumbnail}
-                                title={rank?.find(item => item.encodeId === selected)?.title}
-                                artistsNames={rank?.find(item => item.encodeId === selected)?.artistsNames}
-                                sid={rank?.find(item => item.encodeId === selected)?.encodeId}
-                                percent={Math.round(rank?.find(item => item.encodeId === selected)?.score / chart?.totalScore*100)}
-                                style= 'bg-white'
+                                key={rank?.find(item => item?.encodeId === selected)?.encodeId}
+                                thumbnail={rank?.find(item => item?.encodeId === selected)?.thumbnail}
+                                title={rank?.find(item => item?.encodeId === selected)?.title}
+                                artistsNames={rank?.find(item => item?.encodeId === selected)?.artistsNames}
+                                sid={rank?.find(item => item?.encodeId === selected)?.encodeId}
+                                percent={Math.round(rank?.find(item => item?.encodeId === selected)?.score / chart?.totalScore*100)}
+                                style= 'bg-[#4A90E2]'
                             />
                         </div>
                     </div>
