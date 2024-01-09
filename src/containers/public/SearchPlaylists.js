@@ -18,7 +18,7 @@ const SearchPlaylists = () => {
     fetch()
   }, [searchData])
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col mb-[100px]'>
       <div className='flex items-center'>
         <h3 className='text-xl font-bold'>Playlist/Album</h3>
       </div>
