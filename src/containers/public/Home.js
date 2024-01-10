@@ -1,22 +1,31 @@
 import React from 'react'
-import { Slider, Section, NewRelease, ChartSection, SongItem } from '../../components'
+import { Section, NewRelease, ChartSection, SongItem } from '../../components'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { IoIosArrowForward } from 'react-icons/io'
+import Slider from "react-slick"
 
 const Home = () => {
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    arrows: true
+  }
   const {chill, sad, top100, hotAlbum, weekChart, remix, topYear, topNewSong} = useSelector(state => state.app)
   // console.log(weekChart);
 
   return (
     <div className='overflow-y-auto w-full'>
-      <Slider/>
+      {/* <Slider/> */}
       <NewRelease/>
       <Section data={remix} items={remix?.items}/>
       <Section data={topYear} items={topYear?.items}/>
       <Section data={chill} items={chill?.items}/>
       <Section data={sad} items={sad?.items}/>
-      <div className='mt-12'>
+      <div className='mt-12 w-full'>
         <div className="mb-5 flex items-center justify-between">
           <h3 className="text-xl font-bold text-black-100">{topNewSong?.title}</h3>
           <div className="text-text-secondary flex gap-1 cursor-pointer">
@@ -26,21 +35,23 @@ const Home = () => {
             <span className="flex justify-center items-center pt-[1px]"><IoIosArrowForward size={20}/></span>
           </div>
         </div>
-        <div className="flex gap-10 min-h-[140px]">
-          {topNewSong?.items?.map((item, index) => (
-            <div key={item?.encodeId} className={`w-[50%] laptop:w-[33%] ${index <= 2 ? "block" : "hidden"}`}>
-              <SongItem
-                thumbnail={item?.thumbnail}
-                title={item?.title}
-                artistsNames={item?.artistsNames}
-                sid={item?.encodeId}
-                bgColor='bg-[hsla(0,0%,100%,0.3)]'
-                size='max-w-[120px]'
-                topSongReleaseData={item?.releaseDate}
-                rankSong={index + 1}
-              />
-            </div>
-          ))}
+        <div className="w-full">
+          <Slider {...settings}>
+            {topNewSong?.items?.map((item, index) => (
+              <div key={item?.encodeId} className={`px-[14px]`}>
+                <SongItem
+                  thumbnail={item?.thumbnail}
+                  title={item?.title}
+                  artistsNames={item?.artistsNames}
+                  sid={item?.encodeId}
+                  bgColor='bg-[hsla(0,0%,100%,0.3)]'
+                  size='max-w-[120px]'
+                  topSongReleaseData={item?.releaseDate}
+                  rankSong={index + 1}
+                />
+              </div>
+            ))}
+          </Slider>
         </div>
       </div>
       <ChartSection/>

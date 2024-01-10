@@ -15,7 +15,7 @@ const SongItem = ({thumbnail, title, artistsNames, sid, releaseDate, order, perc
       dispatch(actions.play(true))
       dispatch(actions.setRecent({thumbnail, title, sid, artistsNames}))
     }}
-    className={`w-full flex-auto p-[10px] flex rounded-md cursor-pointer justify-between items-center ${style || 'hover:bg-main-200'} ${bgColor || ''}`}>
+    className={`w-full p-[10px] flex rounded-md cursor-pointer justify-between items-center ${style || 'hover:bg-main-200'} ${bgColor || ''}`}>
         <div className='flex items-center h-full w-full'>
           {rankSong && !topSongReleaseData && <span className={`mr-[15px] text-[34px] text-transparent font-[900] ${rankSong === 1 ? 'font-outline-blue' : rankSong === 2 ? 'font-outline-green' : 'font-outline-red'}`}>{rankSong}</span>}
           <div className={`mr-[10px] w-full rounded-md relative overflow-hidden group ${size || 'max-w-[60px]'}`}>
