@@ -42,7 +42,7 @@ const Playlist = () => {
       }
     }, [pid])
   return (
-    <div className='flex relative gap-8 w-full h-full mt-[30px] pt-10 animate-scale-up-center'>
+    <div className='flex relative gap-8 w-full h-full mt-[70px] pt-10 animate-scale-up-center'>
         <div className='flex-none w-[300px] flex flex-col items-center'>
           <div className='w-full relative rounded-lg cursor-pointer overflow-hidden group'>
             <img src={playlistData?.thumbnailM} alt="thumbnail" className='object-contain w-full rounded-lg shadow-thumbnail scale-100 group-hover:scale-110 transition ease-in-out duration-700' />

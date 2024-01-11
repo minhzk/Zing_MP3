@@ -1,16 +1,19 @@
 import React from 'react'
 import icons from '../utils/icons'
 import { Search } from './'
+import { useNavigate } from 'react-router-dom'
 
 const { BsArrowLeft, BsArrowRight } = icons
 
 const Header = () => {
+
+    const navigate = useNavigate()
   return (
     <div className='flex justify-between w-full items-center px-[59px]'>
         <div className='flex gap-6 w-full items-center'>
             <div className='flex gap-6 text-gray-400'>
-                <span><BsArrowLeft size={24}/></span>
-                <span><BsArrowRight size={24}/></span>
+                <span onClick={() => navigate(-1)} className='cursor-pointer'><BsArrowLeft size={24}/></span>
+                <span onClick={() => navigate(1)} className='cursor-pointer'><BsArrowRight size={24}/></span>
             </div>
             <div className='w-1/2'>
                 <Search/>

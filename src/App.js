@@ -42,6 +42,10 @@ function App() {
                             element={<Singer />}
                         />
                         <Route
+                            path={path.HOME_ARTIST__SINGER}
+                            element={<Singer />}
+                        />
+                        <Route
                             path={path.SEARCH}
                             element={<Search />}
                         >
