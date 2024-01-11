@@ -1,9 +1,9 @@
 import React from 'react'
-import { Section, NewRelease, ChartSection, SongItem } from '../../components'
+import { Slider, Section, NewRelease, ChartSection, SongItem } from '../../components'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { IoIosArrowForward } from 'react-icons/io'
-import Slider from "react-slick"
+import Sliders from "react-slick"
 
 const Home = () => {
   const settings = {
@@ -12,14 +12,13 @@ const Home = () => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
-    arrows: true
   }
   const {chill, sad, top100, hotAlbum, weekChart, remix, topYear, topNewSong} = useSelector(state => state.app)
   // console.log(weekChart);
 
   return (
-    <div className='overflow-y-auto w-full'>
-      {/* <Slider/> */}
+    <div className='overflow-y-auto w-full mt-[70px]'>
+      <Slider/>
       <NewRelease/>
       <Section data={remix} items={remix?.items}/>
       <Section data={topYear} items={topYear?.items}/>
@@ -36,7 +35,7 @@ const Home = () => {
           </div>
         </div>
         <div className="w-full">
-          <Slider {...settings}>
+          <Sliders {...settings}>
             {topNewSong?.items?.map((item, index) => (
               <div key={item?.encodeId} className={`px-[14px]`}>
                 <SongItem
@@ -51,7 +50,7 @@ const Home = () => {
                 />
               </div>
             ))}
-          </Slider>
+          </Sliders>
         </div>
       </div>
       <ChartSection/>

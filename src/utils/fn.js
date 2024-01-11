@@ -21,3 +21,13 @@ export const handleNumber = number => {
         return `${Math.round(number / Math.pow(10, 3))}K`
     }
 }
+
+export const formatNumber = number => {
+
+    // Sử dụng toLocaleString để chuyển đổi số thành chuỗi với định dạng số ngăn cách hàng nghìn
+    const formattedNumber = number?.toLocaleString();
+    // Thay thế dấu phân cách hàng nghìn thành dấu chấm
+    const customFormattedNumber = formattedNumber?.replace(/,/g, '.');
+
+    return customFormattedNumber
+}
