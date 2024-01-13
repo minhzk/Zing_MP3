@@ -8,13 +8,14 @@ const initState = {
     hotAlbum: {},
     remix: {},
     topYear: {},
+    seasonPlaylists: {},
     isLoading: false,
     newRelease: {},
     weekChart: [],
     chart: {},
     rank: [],
     topNewSong: {},
-
+    
 }
 
 const appReducer = (state = initState, action) => {
@@ -29,6 +30,7 @@ const appReducer = (state = initState, action) => {
                 hotAlbum: action.homeData?.find(item => item.sectionId === 'hAlbum') || {},
                 remix: action.homeData?.find(item => item.sectionId === 'hEditorTheme3') || {},
                 topYear: action.homeData?.find(item => item.sectionId === 'hArtistTheme') || {},
+                seasonPlaylists: action.homeData?.find(item => item.sectionId === 'hSeasonTheme') || {},
                 newRelease: action.homeData?.find(item => item.sectionType === 'new-release') || {},
                 weekChart: action.homeData?.find(item => item.sectionType === 'weekChart')?.items || [],
                 chart: action.homeData?.find(item => item.sectionId === 'hZC')?.chart || {},

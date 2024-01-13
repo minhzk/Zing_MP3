@@ -13,13 +13,14 @@ const Home = () => {
     slidesToShow: 3,
     slidesToScroll: 3,
   }
-  const {chill, sad, top100, hotAlbum, weekChart, remix, topYear, topNewSong} = useSelector(state => state.app)
+  const {chill, sad, top100, hotAlbum, weekChart, remix, topYear, topNewSong, seasonPlaylists} = useSelector(state => state.app)
   // console.log(weekChart);
 
   return (
     <div className='overflow-y-auto w-full mt-[70px]'>
       <Slider/>
       <NewRelease/>
+      {seasonPlaylists && <Section data={seasonPlaylists} items={seasonPlaylists?.items}></Section>}
       <Section data={remix} items={remix?.items}/>
       <Section data={topYear} items={topYear?.items}/>
       <Section data={chill} items={chill?.items}/>
