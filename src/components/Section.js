@@ -4,7 +4,7 @@ import icons from '../utils/icons'
 
 const { IoMdHeartEmpty, IoMdHeart, IoIosPlay, BsThreeDots, IoIosArrowForward } = icons
 
-const Section = ({ data, artists, items, number, wrap, notShowAll }) => {
+const Section = ({ data, artists, items, number, wrap, notShowAll, releaseYear }) => {
   const navigate = useNavigate();
   return (
     <div className={`${!notShowAll && 'mt-12'}`}>
@@ -59,9 +59,17 @@ const Section = ({ data, artists, items, number, wrap, notShowAll }) => {
                     ? `${item?.title.slice(0, 26)}... `
                     : item?.title}
                 </span>
-                { artists ? (
+                { artists 
+                ? (
                   <span className="text-sm font-normal text-text-secondary">{item?.artistsNames}</span>
-                ) : (
+                ) 
+                :  releaseYear 
+                ? 
+                (
+                  <span className="text-sm font-normal text-text-secondary">{item?.releaseDateText}</span>
+                ) 
+                :
+                 (
                   <span className="text-sm font-normal text-text-secondary">
                     {item?.sortDescription.length > 54
                       ? `${item?.sortDescription.slice(0, 54)}... `
