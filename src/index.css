@@ -25,7 +25,7 @@
       box-shadow: 0 1px 0 rgba(0,0,0,0.3),0 1px 6px rgba(0,0,0,0.3),inset 0 1px 1px hsla(0,0%,100%,0.3);
     }
     .header-shadow {
-      box-shadow: 0 3px 5px rgba(0,0,0,0.08);;
+      box-shadow: 0 3px 5px rgba(0,0,0,0.08);
     }
     
 }
@@ -43,5 +43,9 @@
 .slick-next {
   right: 16px !important;
   z-index: 100;
+}
+
+.back-filter-blur {
+  backdrop-filter: blur(50px);
 }
 
