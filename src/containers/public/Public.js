@@ -27,7 +27,7 @@ const Public = () => {
           {isLoading && <div className='flex items-center justify-center absolute top-0 bottom-0 left-0 right-0 z-10 bg-main-200'>
             <Loading/>
           </div>}
-          <div ref={scrollRef} className="h-[70px] fixed top-0 flex-none left-[240px] right-0 z-20 flex items-center ">
+          <div ref={scrollRef} className="h-[70px] fixed top-0 flex-none left-[240px] right-0 z-20 flex items-center">
             <Header />
           </div>
           <div className="flex-auto w-full z-0">
