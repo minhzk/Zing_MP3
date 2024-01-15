@@ -22,7 +22,7 @@ const Home = () => {
       <NewRelease/>
       {seasonPlaylists && <Section data={seasonPlaylists} items={seasonPlaylists?.items}></Section>}
       <Section data={remix} items={remix?.items}/>
-      <Section data={topYear} items={topYear?.items}/>
+      {topYear && <Section data={topYear} items={topYear?.items}/>}
       <Section data={chill} items={chill?.items}/>
       <Section data={sad} items={sad?.items}/>
       <div className='mt-12 w-full'>

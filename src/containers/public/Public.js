@@ -37,6 +37,7 @@ const Public = () => {
               <div className="px-[59px]">
                 <Outlet />
               </div>
+              <div className="w-full h-[120px]"></div>
             </Scrollbars>
           </div>
         </div>

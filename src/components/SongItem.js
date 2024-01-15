@@ -17,7 +17,7 @@ const SongItem = ({thumbnail, title, artistsNames, sid, releaseDate, order, perc
     }}
     className={`w-full p-[10px] flex rounded-md cursor-pointer justify-between items-center ${style || 'hover:bg-main-200'} ${bgColor || ''}`}>
         <div className='flex items-center h-full w-full'>
-          {rankSong && !topSongReleaseData && <span className={`mr-[15px] text-[34px] text-transparent font-[900] ${rankSong === 1 ? 'font-outline-blue' : rankSong === 2 ? 'font-outline-green' : 'font-outline-red'}`}>{rankSong}</span>}
+          {order && <span className={`mr-[15px] text-[34px] text-transparent font-[900] ${order === 1 ? 'font-outline-blue' : order === 2 ? 'font-outline-green' : order === 3 ? 'font-outline-red' : 'font-outline-gray'}`}>{order}</span>}
           <div className={`mr-[10px] w-full rounded-md relative overflow-hidden group ${size || 'max-w-[60px]'}`}>
             <div className='absolute inset-0 z-20 group-hover:bg-overlay-50 text-white flex items-center justify-center'>
               {rankSong && <span className="pl-[6px] pr-[2px] pt-1 pb-1 hidden group-hover:flex border border-white rounded-full">

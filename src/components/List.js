@@ -10,7 +10,7 @@ import * as actions from '../store/actions';
 
 const { LuMusic } = icons
 
-const List = ({songData, isHidePlaylist, isHideIcon}) => {
+const List = ({songData, isHidePlaylist, isHideIcon, order}) => {
 
     const dispatch = useDispatch()
 
@@ -25,6 +25,7 @@ const List = ({songData, isHidePlaylist, isHideIcon}) => {
     }}
     >
         <div className='flex items-center gap-2 flex-[5]'>
+            {order && <span className={`mr-[15px] text-[34px] text-transparent font-[900] flex justify-center items-center flex-none w-[10%] ${order === 1 ? 'font-outline-blue' : order === 2 ? 'font-outline-green' : order === 3 ? 'font-outline-red' : 'font-outline-gray'}`}>{order}</span>}
             {!isHideIcon && <span className='text-song-item-action'><LuMusic size={15}/></span>}
             <img src={songData?.thumbnail} alt="thumbnail" className='w-10 h-10 object-cover rounded-md' />
             <span className='flex flex-col w-full'>

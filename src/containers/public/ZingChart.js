@@ -2,9 +2,10 @@ import React, {useEffect, useState, useRef} from 'react'
 import { apiGetChartHome } from '../../apis/music'
 import { Line } from 'react-chartjs-2';
 import { Chart } from 'chart.js/auto';
-import { SongItem, List } from '../../components';
+import { SongItem, TopSongs } from '../../components';
 import _ from 'lodash'
 import { IoIosPlay } from 'react-icons/io';
+import bg from '../../assets/img/week-chart-bg.jpg'
 
 const ZingChart = () => {
 
@@ -54,7 +55,6 @@ const ZingChart = () => {
                 }
                 // console.log(+tooltip.body[0]?.lines[0]?.replace(',', ''));
                 const rs = counters.find(item => item.data.some(n => n === +tooltip.body[0]?.lines[0]?.replace(',', '')))
-                console.log(rs);
                 setSelected(rs.encodeId)
                 const newTooltipData = {
                     opacity: 1,
@@ -102,9 +102,11 @@ const ZingChart = () => {
         }
     }
   }, [chartData]) 
+  // console.log(Object.entries(chartData?.weekChart));
+
   return (
-    <div className='mt-[70px] mb-[400px]'>
-      <div className='flex flex-col w-full'>
+    <div className='mt-[70px]'>
+      <div className='flex flex-col w-full gap-8'>
         <div className='w-full flex flex-col'>
           <div className='flex gap-2 items-center mb-5'>
               <h3 className='text-[28px] text-white font-bold bg-zingchart bg-clip-text text-fill-color-transparent'>#zingchart</h3>
@@ -125,10 +127,30 @@ const ZingChart = () => {
             </div>
           </div>
         </div>
-        <div className='mt-4'>
-          {chartData?.RTChart?.items?.map(item => (
-            <List songData={item} key={item?.encodeId}/>
-          ))}
+        <TopSongs data={chartData?.RTChart?.items} number={10} isHidePlaylist={false} />
+        <div className='relative mx-[-59px]'>
+          <img src={bg} alt="week-chart-bg" className='w-full h-[610px] object-cover grayscale' />
+          <div className='absolute inset-0 bg-grayscale'></div>
+          <div className='absolute top-8 left-0 right-0 bottom-1/2 flex flex-col gap-5 px-[59px]'>
+            <h3 className='font-bold text-[40px] text-text-hover'>Bảng Xếp Hạng Tuần</h3>
+            <div className='flex gap-4'>
+              {chartData && Object?.entries(chartData?.weekChart)?.map((item, index) => (
+                <div className='flex-1 bg-[hsla(0,0%,100%,0.5)] rounded-md px-[10px] py-5 flex flex-col' key={index}>
+                  <div className='flex gap-2'>
+                    <h3 className='pl-10 pb-[10px] font-bold text-[24px] text-text-hover'>{item[0] === 'vn' ? 'Việt Nam' : item[0] === 'us' ? 'US-UK' : 'K-Pop'}</h3>
+                    <span className='text-white p-1 rounded-full h-[29px] w-[29px] bg-main-500 opacity-100 hover:opacity-90 cursor-pointer mt-[6px]'><IoIosPlay size={22} className='pl-[1px] pb-[1px]'/></span>
+                  </div>
+                  <div className='h-fit'>
+                    <TopSongs 
+                      data={item[1]?.items}
+                      number={5}
+                      isHidePlaylist={true}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

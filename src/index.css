@@ -12,6 +12,9 @@
     .font-outline-green {
       -webkit-text-stroke: 1px #50e3c2;
     }
+    .font-outline-gray {
+      -webkit-text-stroke: 1px #32323d;
+    }
     .text-fill-color-transparent {
       -webkit-text-fill-color: transparent;
     }
@@ -47,5 +50,9 @@
 
 .back-filter-blur {
   backdrop-filter: blur(50px);
+}
+
+.bg-grayscale {
+  background-color: rgb(206 217 217/0.9);
 }
 
