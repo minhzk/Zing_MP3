@@ -42,7 +42,7 @@ const SongItem = ({thumbnail, title, artistsNames, sid, releaseDate, order, perc
             </div>}
           </div>
         </div>
-        {percent && <span className='text-white'>{`${percent}%`}</span>}
+        {percent && <span className='text-white ml-4'>{`${percent}%`}</span>}
     </div>
   )
 }
