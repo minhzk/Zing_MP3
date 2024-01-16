@@ -68,8 +68,6 @@ const Home = () => {
       </div>
       <Section data={top100} artists items={top100?.items}/>
       <Section data={hotAlbum} artists items={hotAlbum?.items}/>
-
-      <div className='w-full h-[500px]'></div>
     </div>
   )
 }

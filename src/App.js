@@ -3,14 +3,23 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Home, Login, Public, Personal, Playlist, WeekRank, ZingChart, Search, SearchAll, SearchSongs, Singer, SearchPlaylists } from './containers/public';
 import { Routes, Route } from 'react-router-dom';
 import path from './utils/path';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import * as actions from './store/actions';
 import { useDispatch } from 'react-redux';
+import { apiGetChartHome } from './apis/music'
 
 function App() {
     const dispatch = useDispatch();
+    const [weekChart, setWeekChart] = useState(null)
     useEffect(() => {
         dispatch(actions.getHome());
+        const fetchChartData = async() => {
+            const res = await apiGetChartHome()
+            if (res?.data?.err === 0) {
+                setWeekChart(res?.data?.data?.weekChart)
+            }
+        }
+        fetchChartData()
     }, []);
 
     return (
@@ -31,7 +40,7 @@ function App() {
                         />
                         <Route
                             path={path.WEEKRANK__TITLE__PID}
-                            element={<WeekRank />}
+                            element={<WeekRank weekChart={weekChart && Object.values(weekChart)} />}
                         />
                         <Route
                             path={path.ZING_CHART}
