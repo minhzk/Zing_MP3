@@ -2,7 +2,7 @@ import React, {useEffect, useState, useRef} from 'react'
 import { apiGetChartHome } from '../../apis/music'
 import { Line } from 'react-chartjs-2';
 import { Chart } from 'chart.js/auto';
-import { SongItem, TopSongs } from '../../components';
+import { SongItem, TopSongs, List } from '../../components';
 import _ from 'lodash'
 import { IoIosPlay } from 'react-icons/io';
 import bg from '../../assets/img/week-chart-bg.jpg'
@@ -127,7 +127,10 @@ const ZingChart = () => {
             </div>
           </div>
         </div>
-        <TopSongs data={chartData?.RTChart?.items} number={10} isHidePlaylist={false} />
+        <div className='flex flex-col'>
+          <List />
+          <TopSongs data={chartData?.RTChart?.items} number={10} isHidePlaylist={false} />
+        </div>
         <div className='relative mx-[-59px]'>
           <img src={bg} alt="week-chart-bg" className='w-full h-[610px] object-cover grayscale' />
           <div className='absolute inset-0 bg-grayscale'></div>
