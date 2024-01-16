@@ -19,6 +19,7 @@ const ZingChart = () => {
   })
   const [selected, setSelected] = useState(null)
   const chartRef = useRef()
+  const ref = useRef()
   const options = {
     responsive: true,
     pointRadius: 0,
@@ -104,9 +105,13 @@ const ZingChart = () => {
   }, [chartData]) 
   // console.log(Object.entries(chartData?.weekChart));
 
+  useEffect(() => {
+    ref.current.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" })
+  }, [chartData])
+
   return (
     <div className='mt-[70px]'>
-      <div className='flex flex-col w-full gap-8'>
+      <div ref={ref} className='flex flex-col w-full gap-8'>
         <div className='w-full flex flex-col'>
           <div className='flex gap-2 items-center mb-5'>
               <h3 className='text-[28px] text-white font-bold bg-zingchart bg-clip-text text-fill-color-transparent'>#zingchart</h3>
@@ -128,7 +133,7 @@ const ZingChart = () => {
           </div>
         </div>
         <div className='flex flex-col'>
-          <List />
+          <List isHideIcon />
           <TopSongs data={chartData?.RTChart?.items} number={10} isHidePlaylist={false} />
         </div>
         <div className='relative mx-[-59px]'>
@@ -138,7 +143,7 @@ const ZingChart = () => {
             <h3 className='font-bold text-[40px] text-text-hover'>Bảng Xếp Hạng Tuần</h3>
             <div className='flex gap-4'>
               {chartData && Object?.entries(chartData?.weekChart)?.map((item, index) => (
-                <div className='flex-1 bg-[hsla(0,0%,100%,0.5)] rounded-md px-[10px] py-5 flex flex-col' key={index}>
+                <div className='flex-1 bg-[hsla(0,0%,100%,0.5)] rounded-3xl px-[10px] py-5 flex flex-col' key={index}>
                   <div className='flex gap-2'>
                     <h3 className='pl-10 pb-[10px] font-bold text-[24px] text-text-hover'>{item[0] === 'vn' ? 'Việt Nam' : item[0] === 'us' ? 'US-UK' : 'K-Pop'}</h3>
                     <span className='text-white p-1 rounded-full h-[29px] w-[29px] bg-main-500 opacity-100 hover:opacity-90 cursor-pointer mt-[6px]'><IoIosPlay size={22} className='pl-[1px] pb-[1px]'/></span>
@@ -148,6 +153,7 @@ const ZingChart = () => {
                       data={item[1]?.items}
                       number={5}
                       isHidePlaylist={true}
+                      link={item[1]?.link}
                     />
                   </div>
                 </div>
