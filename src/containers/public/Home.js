@@ -8,16 +8,20 @@ import Sliders from "react-slick"
 const Home = () => {
   const settings = {
     dots: false,
-    infinite: false,
-    speed: 500,
+    infinite: true,
     slidesToShow: 3,
     slidesToScroll: 3,
+    autoplay: true,
+    speed: 500,
+    autoplaySpeed: 5000,
+    cssEase: "linear",
+    pauseOnHover: true
   }
   const {chill, sad, top100, hotAlbum, weekChart, remix, topYear, topNewSong, seasonPlaylists} = useSelector(state => state.app)
   // console.log(weekChart);
 
   return (
-    <div className='overflow-y-auto w-full mt-[70px]'>
+    <div className='overflow-y-auto overflow-x-hidden w-full mt-[70px]'>
       <Slider/>
       <NewRelease/>
       {seasonPlaylists && <Section data={seasonPlaylists} items={seasonPlaylists?.items}></Section>}
