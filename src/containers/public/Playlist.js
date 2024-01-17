@@ -47,10 +47,10 @@ const Playlist = () => {
           <div className='w-full relative rounded-lg cursor-pointer overflow-hidden group'>
             <img src={playlistData?.thumbnailM} alt="thumbnail" className='object-contain w-full rounded-lg shadow-thumbnail scale-100 group-hover:scale-110 transition ease-in-out duration-700' />
             <div className={`absolute inset-0 z-20 text-white flex items-center justify-center ${!isPlaying ? 'group-hover:bg-overlay-50' : 'hover:bg-transparent'}`}>
-              <span 
+              {isPlaying && <span 
                 className='p-2 border border-white rounded-full flex items-center justify-center'>
                 {isPlaying ? <AudioLoading/> : <IoIosPlay size={30}/>}
-              </span>
+              </span>}
             </div>
           </div>
           <h3 className='text-xl font-bold text-black-100 mt-3'>{playlistData.title}</h3>
