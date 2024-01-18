@@ -23,7 +23,7 @@ const Slider = () => {
         if (isAuto) {
             intervalId = setInterval(() => {
                 handleAnimationBanner(1)
-            }, 1000)
+            }, 4000)
         }
         return() => {
             intervalId && clearInterval(intervalId)
@@ -57,8 +57,14 @@ const Slider = () => {
                 sliderEls[item]?.classList.add('animate-slide-left2','order-2','z-20')
             }
         })
-        setMin(prev => prev === sliderEls.length - 1 ? 0 : prev + step)
-        setMax(prev => prev === sliderEls.length - 1 ? 0 : prev + step)
+        if (step === 1) {
+            setMin(prev => prev === sliderEls.length - 1 ? 0 : prev + step)
+            setMax(prev => prev === sliderEls.length - 1 ? 0 : prev + step)
+        }
+        if (step === -1) {
+            setMin(prev => prev === 0 ? sliderEls.length - 1 : prev + step)
+            setMax(prev => prev === 0 ? sliderEls.length - 1 : prev + step)
+        }
     }
 
     const handleClickBanner = (item) => {
@@ -75,25 +81,28 @@ const Slider = () => {
         }
     }
 
-    const handleBack = useCallback(() => {
+    const handleClickBtn = useCallback((step) => {
         setIsAuto(false)
-
-        handleAnimationBanner(-1)
-    }, [])
+        handleAnimationBanner(step)
+    }, [min, max])
 
     return (
         <div className='w-full overflow-hidden relative'>
             <Button
                 icon={<GrPrevious size={30}/>}
                 style='absolute top-1/2 left-4 bg-[hsla(0,0%,100%,.15)] text-white btn-shadow hover:opacity-90 z-50 rounded-full h-[55px] w-[55px]'
-                handleOnClick={handleBack}
+                handleOnClick={() => handleClickBtn(-1)}
             />
             <Button
                 icon={<GrNext size={30}/>}
                 style='absolute top-1/2 right-4 bg-[hsla(0,0%,100%,.15)] text-white btn-shadow hover:opacity-80 z-50 rounded-full h-[55px] w-[55px]'
-
+                handleOnClick={() => handleClickBtn(1)}
             />
-            <div className='flex gap-[30px] pt-8 '>
+            <div 
+                className='flex gap-[30px] pt-8 '
+                onMouseLeave={e => setIsAuto(true)}
+                onMouseEnter={e => setIsAuto(false)}
+            >
                 {banner?.map((item, index) => (
                     <img 
                     key={item.encodeId}
