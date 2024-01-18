@@ -1,51 +1,65 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getArraySlider } from '../utils/fn';
 import * as actions from '../store/actions'
 import { useNavigate } from 'react-router-dom';
+import {Button} from '../components'
+import icons from '../utils/icons'
+
+const { GrPrevious, GrNext} = icons
+
+var intervalId
 
 const Slider = () => {
     const { banner } = useSelector((state) => state.app);
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const [min, setMin] = useState(0)
+    const [max, setMax] = useState(2)
+    const [isAuto, setIsAuto] = useState(true)
 
     // Animation for banner
     useEffect(() => {
-        const sliderEls = document.getElementsByClassName('slider-item')
-        let min = 0
-        let max = 2
-        const intervalId = setInterval(() => {
-            const list = getArraySlider(min, max, sliderEls.length - 1)
-            for (let i = 0; i < sliderEls.length; i++) {
-                    // Delete classnames (css)
-                    sliderEls[i]?.classList.remove('animate-slide-right','order-last','z-10')
-                    sliderEls[i]?.classList.remove('animate-slide-left','order-first','z-20')
-                    sliderEls[i]?.classList.remove('animate-slide-left2','order-2','z-20')
-
-                    // Hide or show images
-                    if (list.some(item => item === i )) {
-                        sliderEls[i].style.cssText = 'display: block;'
-                    } else {
-                        sliderEls[i].style.cssText = 'display: none;'
-                    } 
-            }
-            // Add animations by adding classnames
-            list.forEach(item => {
-                if (item === max) {
-                    sliderEls[item]?.classList.add('animate-slide-right','order-last','z-10')
-                } else if (item === min) {
-                    sliderEls[item]?.classList.add('animate-slide-left','order-first','z-20')
-                } else {
-                    sliderEls[item]?.classList.add('animate-slide-left2','order-2','z-20')
-                }
-            })
-            min = (min === sliderEls.length - 1) ? 0 : min + 1
-            max = (max === sliderEls.length - 1) ? 0 : max + 1
-        }, 4000)
+        if (isAuto) {
+            intervalId = setInterval(() => {
+                handleAnimationBanner(1)
+            }, 1000)
+        }
         return() => {
             intervalId && clearInterval(intervalId)
         }
-    }, [])
+    }, [min,max, isAuto])
+
+    const handleAnimationBanner = (step) => {
+        const sliderEls = document.getElementsByClassName('slider-item')
+        const list = getArraySlider(min, max, sliderEls.length - 1)
+        console.log(list);
+        for (let i = 0; i < sliderEls.length; i++) {
+                // Delete classnames (css)
+                sliderEls[i]?.classList.remove('animate-slide-right','order-last','z-10')
+                sliderEls[i]?.classList.remove('animate-slide-left','order-first','z-20')
+                sliderEls[i]?.classList.remove('animate-slide-left2','order-2','z-20')
+
+                // Hide or show images
+                if (list.some(item => item === i )) {
+                    sliderEls[i].style.cssText = 'display: block;'
+                } else {
+                    sliderEls[i].style.cssText = 'display: none;'
+                } 
+        }
+        // Add animations by adding classnames
+        list.forEach(item => {
+            if (item === max) {
+                sliderEls[item]?.classList.add('animate-slide-right','order-last','z-10')
+            } else if (item === min) {
+                sliderEls[item]?.classList.add('animate-slide-left','order-first','z-20')
+            } else {
+                sliderEls[item]?.classList.add('animate-slide-left2','order-2','z-20')
+            }
+        })
+        setMin(prev => prev === sliderEls.length - 1 ? 0 : prev + step)
+        setMax(prev => prev === sliderEls.length - 1 ? 0 : prev + step)
+    }
 
     const handleClickBanner = (item) => {
         if(item?.type === 1) {
@@ -61,9 +75,25 @@ const Slider = () => {
         }
     }
 
+    const handleBack = useCallback(() => {
+        setIsAuto(false)
+
+        handleAnimationBanner(-1)
+    }, [])
+
     return (
-        <div className='w-full overflow-hidden'>
-            <div className='flex gap-[30px] pt-8'>
+        <div className='w-full overflow-hidden relative'>
+            <Button
+                icon={<GrPrevious size={30}/>}
+                style='absolute top-1/2 left-4 bg-[hsla(0,0%,100%,.15)] text-white btn-shadow hover:opacity-90 z-50 rounded-full h-[55px] w-[55px]'
+                handleOnClick={handleBack}
+            />
+            <Button
+                icon={<GrNext size={30}/>}
+                style='absolute top-1/2 right-4 bg-[hsla(0,0%,100%,.15)] text-white btn-shadow hover:opacity-80 z-50 rounded-full h-[55px] w-[55px]'
+
+            />
+            <div className='flex gap-[30px] pt-8 '>
                 {banner?.map((item, index) => (
                     <img 
                     key={item.encodeId}
@@ -74,6 +104,7 @@ const Slider = () => {
                     />
                 ))}
             </div>
+            
         </div>
     );
 };

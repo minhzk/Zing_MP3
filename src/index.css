@@ -56,3 +56,7 @@
   background-color: rgb(206 217 217/0.9);
 }
 
+.btn-shadow {
+  box-shadow: 0 2px 4px 0 rgba(226,102,102,.15);
+}
+

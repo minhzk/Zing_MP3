@@ -8,6 +8,7 @@ import { PiRepeatLight, PiShuffleLight, PiRepeatOnceLight, PiMusicNotesPlus, PiC
 import { LuMusic, LuDot, LuListMusic, LuVolume1, LuVolume2, LuVolumeX  } from "react-icons/lu";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { FaRegStar } from "react-icons/fa";
+import { GrNext, GrPrevious } from "react-icons/gr";
 const icons = {
     MdOutlineLibraryMusic ,
     RiPieChartLine,
@@ -38,7 +39,9 @@ const icons = {
     IoMdClose,
     PiMusicNotesPlus,
     PiCirclesFour,
-    FaRegStar
+    FaRegStar,
+    GrNext,
+    GrPrevious
 }
 
 export default icons
