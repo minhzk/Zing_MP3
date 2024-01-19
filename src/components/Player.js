@@ -113,6 +113,14 @@ const Player = ({ setIsShowRightSidebar }) => {
     audio.volume = volume / 100
   }, [volume])
 
+  useEffect(() => {
+    if (isPlaying) {
+      audio?.play()
+    } else {
+      audio?.pause()
+    }
+  }, [isPlaying])
+
   const handleTogglePlayMusic = () => {
     if (isPlaying) {
       audio?.pause();
