@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux'
 import icons from '../../utils/icons'
 
 
-const {IoIosPlay} = icons
+const {IoIosPlay, IoIosPause, IoMdHeartEmpty, BsThreeDots} = icons
 
 const Playlist = () => {
     const location = useLocation()
@@ -41,16 +41,24 @@ const Playlist = () => {
         dispatch(actions.play(true))
       }
     }, [pid])
+
+    const handleTogglePlayMusic = () => {
+      if (isPlaying) {
+        dispatch(actions.play(false))
+      } else {
+        dispatch(actions.play(true))
+      }
+    }
   return (
     <div className='flex relative gap-8 w-full h-full mt-[70px] pt-10 animate-scale-up-center'>
         <div className='flex-none w-[300px] flex flex-col items-center'>
           <div className='w-full relative rounded-lg cursor-pointer overflow-hidden group'>
             <img src={playlistData?.thumbnailM} alt="thumbnail" className='object-contain w-full rounded-lg shadow-thumbnail scale-100 group-hover:scale-110 transition ease-in-out duration-700' />
             <div className={`absolute inset-0 z-20 text-white flex items-center justify-center ${!isPlaying ? 'group-hover:bg-overlay-50' : 'hover:bg-transparent'}`}>
-              {isPlaying && <span 
-                className='p-2 border border-white rounded-full flex items-center justify-center'>
+              <span 
+                className={`p-2 border border-white rounded-full m-auto ${isPlaying ? 'block' : 'hidden'} group-hover:block`}>
                 {isPlaying ? <AudioLoading/> : <IoIosPlay size={30}/>}
-              </span>}
+              </span>
             </div>
           </div>
           <h3 className='text-xl font-bold text-black-100 mt-3'>{playlistData.title}</h3>
@@ -63,6 +71,19 @@ const Playlist = () => {
               {playlistData?.artistsNames}
             </span>
             <span>{`${Math.round(playlistData?.like / 1000)}K người yêu thích`}</span>
+            <div className='flex flex-col'>
+              <div 
+              className='flex gap-1 justify-center items-center text-white bg-main-500 rounded-full py-[9px] px-6 cursor-pointer my-4'
+              onClick={handleTogglePlayMusic}
+              >
+                <span>{isPlaying ? <IoIosPause size={22}/> : <IoIosPlay size={22}/>}</span>
+                <span className='font-medium text-sm '>{isPlaying ? 'TẠM DỪNG' : 'TIẾP TỤC PHÁT'}</span>
+              </div>
+              <div className='flex gap-[10px] items-center justify-center'>
+                <span className='w-[35px] h-[35px] rounded-full p-[5px] cursor-pointer flex items-center justify-center  bg-[hsla(0,0%,100%,0.3)] hover:brightness-90'><IoMdHeartEmpty size={18}/></span>
+                <span className='w-[35px] h-[35px] rounded-full p-[5px] cursor-pointer flex items-center justify-center  bg-[hsla(0,0%,100%,0.3)] hover:brightness-90'><BsThreeDots size={18}/></span>
+              </div>
+            </div>
           </div>
         </div>
         <Scrollbars autoHide style={{ width: '100%', height: "70vh" }}>

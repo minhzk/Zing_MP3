@@ -33,7 +33,6 @@ const Slider = () => {
     const handleAnimationBanner = (step) => {
         const sliderEls = document.getElementsByClassName('slider-item')
         const list = getArraySlider(min, max, sliderEls.length - 1)
-        console.log(list);
         for (let i = 0; i < sliderEls.length; i++) {
                 // Delete classnames (css)
                 sliderEls[i]?.classList.remove('animate-slide-right','order-last','z-10')
@@ -105,11 +104,11 @@ const Slider = () => {
             >
                 {banner?.map((item, index) => (
                     <img 
-                    key={item.encodeId}
-                    src={item.banner} 
-                    onClick={() => handleClickBanner(item)}
-                    className={`slider-item cursor-pointer flex-1 object-contain w-[30%] rounded-lg ${index <= 2 ? 'block' : 'hidden'}`}
-                    alt='Banner'
+                        key={item.encodeId}
+                        src={item.banner} 
+                        onClick={() => handleClickBanner(item)}
+                        className={`slider-item cursor-pointer flex-1 object-contain w-[30%] rounded-lg ${index <= 2 ? 'block' : 'hidden'}`}
+                        alt='Banner'
                     />
                 ))}
             </div>

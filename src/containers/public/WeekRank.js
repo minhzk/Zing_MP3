@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react'
+import React, {useEffect, useRef} from 'react'
 import { useParams, NavLink } from 'react-router-dom'
 import { TopSongs } from '../../components'
 import { IoIosPlay } from 'react-icons/io'
