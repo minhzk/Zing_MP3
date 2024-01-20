@@ -86,15 +86,15 @@ const Slider = () => {
     }, [min, max])
 
     return (
-        <div className='w-full overflow-hidden relative'>
+        <div className='w-full overflow-hidden relative group'>
             <Button
                 icon={<GrPrevious size={30}/>}
-                style='absolute top-1/2 left-4 bg-[hsla(0,0%,100%,.15)] text-white btn-shadow hover:opacity-90 z-50 rounded-full h-[55px] w-[55px]'
+                style='absolute top-1/2 left-4 bg-[hsla(0,0%,100%,.15)] text-white btn-shadow hover:opacity-90 z-50 rounded-full h-[55px] w-[55px] hidden group-hover:block'
                 handleOnClick={() => handleClickBtn(-1)}
             />
             <Button
                 icon={<GrNext size={30}/>}
-                style='absolute top-1/2 right-4 bg-[hsla(0,0%,100%,.15)] text-white btn-shadow hover:opacity-80 z-50 rounded-full h-[55px] w-[55px]'
+                style='absolute top-1/2 right-4 bg-[hsla(0,0%,100%,.15)] text-white btn-shadow hover:opacity-80 z-50 rounded-full h-[55px] w-[55px] hidden group-hover:block'
                 handleOnClick={() => handleClickBtn(1)}
             />
             <div 
