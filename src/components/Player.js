@@ -34,9 +34,11 @@ const Player = ({ setIsShowRightSidebar }) => {
   const [repeatMode, setRepeatMode] = useState(0);
   const [isLoadedSource, setIsLoadedSource] = useState(true);
   const [volume, setVolume] = useState(100)
+  const [isHoverVolume, setIsHoverVolume] = useState(false)
   const dispatch = useDispatch();
   const thumbRef = useRef();
   const trackRef = useRef();
+  const volumeRef = useRef();
 
   // useEffect kh sd được bất đồng bộ
   useEffect(() => {
@@ -111,6 +113,12 @@ const Player = ({ setIsShowRightSidebar }) => {
 
   useEffect(() => {
     audio.volume = volume / 100
+  }, [volume])
+
+  useEffect(() => {
+    if (volumeRef.current) {
+      volumeRef.current.style.cssText = `right: ${100 - volume}%;`
+    }
   }, [volume])
 
   useEffect(() => {
@@ -261,18 +269,25 @@ const Player = ({ setIsShowRightSidebar }) => {
         </div>
       </div>
       <div className="flex w-[30%] flex-auto items-center justify-end gap-4">
-        <div className="flex gap-2 items-center">
+        <div 
+          className="flex gap-2 items-center"
+          onMouseEnter={() => setIsHoverVolume(true)}
+          onMouseLeave={() => setIsHoverVolume(false)}
+        >
             <span className="cursor-pointer" onClick={() => setVolume(prev => +prev === 0 ? 40 : 0)}>
                 {+volume >= 50 ? <LuVolume2 size={20}/> : +volume === 0 ? <LuVolumeX size={20}/> : <LuVolume1 size={20}/>}
             </span>
+            <div className={`w-[130px] h-[5px] bg-[rgba(0,0,0,0.1)] rounded-full ${isHoverVolume ? 'hidden' : 'relative'}`}>
+              <div ref={volumeRef} className="absolute left-0 bottom-0 top-0 bg-main-500 rounded-full"></div>
+            </div>
             <input
-            type="range"
-            step={1}
-            min={0}
-            max={100}
-            className="cursor-pointer"
-            value={volume}
-            onChange={(e) => setVolume(e.target.value)}
+              type="range"
+              step={1}
+              min={0}
+              max={100}
+              className={`cursor-pointer w-[130px] h-[7px] rounded-full  ${isHoverVolume ? 'inline-block' : 'hidden'}`}
+              value={volume}
+              onChange={(e) => setVolume(e.target.value)}
             />
         </div>
         <span

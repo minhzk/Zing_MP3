@@ -60,3 +60,6 @@
   box-shadow: 0 2px 4px 0 rgba(226,102,102,.15);
 }
 
+input[type="range"] {
+  accent-color: #0E8080;
+}
