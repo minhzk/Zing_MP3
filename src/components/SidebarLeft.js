@@ -14,17 +14,15 @@ const activeStyle =
 const SidebarLeft = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex h-full flex-col bg-main-200">
+    <div className="flex h-full flex-col 1132:bg-main-200 bg-main-700">
       <div
         onClick={() => navigate(path.HOME)}
-        className="flex w-full cursor-pointer items-center justify-start px-[25px] py-[15px]"
+        className="flex w-full cursor-pointer items-center justify-start 1132:px-[25px] 1132:py-[15px] h-[70px]"
       >
-        <img src={logo} alt="logo" className="h-10 w-[120px]" />
+        <img src={logo} alt="logo" className="h-10 w-[120px] hidden 1132:block" />
+        <img src="https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.9.109/static/media/icon_zing_mp3_60.f6b51045.svg" alt=""  className="1132:hidden m-auto w-[45px] h-[45px]"/>
       </div>
       <div className="flex flex-col">
-        <NavLink to={"/"} className="px-[25px] py-2 font-bold">
-          Home
-        </NavLink>
         <div className="flex flex-col mb-4">
           {mainSidebarMenu.map((item) => (
             <NavLink
@@ -36,7 +34,7 @@ const SidebarLeft = () => {
               }
             >
               {item.icon}
-              <span>{item.text}</span>
+              <span className="hidden 1132:flex">{item.text}</span>
             </NavLink>
           ))}
         </div>
@@ -54,7 +52,7 @@ const SidebarLeft = () => {
                 }
               >
                 {item.icon}
-                <span>{item.text}</span>
+                <span className="hidden 1132:flex">{item.text}</span>
               </NavLink>
             ))}
             <div className="mb-4"></div>
