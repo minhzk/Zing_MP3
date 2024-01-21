@@ -10,6 +10,7 @@ module.exports = {
                 'main-400': '#C0D8D8',
                 'main-500': '#0E8080',
                 'main-600': '#E7EDED',
+                'main-700': '#cce0e0',
                 'overlay-50': 'rgba(0,0,0,0.5)',
                 'overlay-10': 'rgba(0,0,0,0.1)',
 
@@ -101,6 +102,9 @@ module.exports = {
             '1400': '1400px',
             '1200': '1200px',
             'laptop': '1224px',
+            '1024': '1024px',
+            '1350': '1350px',
+            '1132': '1132px',
         }
     },
     plugins: [],

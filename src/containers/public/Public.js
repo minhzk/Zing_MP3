@@ -20,14 +20,14 @@ const Public = () => {
   return (
     <div className="relative flex h-screen w-full flex-col bg-main-300">
       <div className="flex h-full w-full flex-auto">
-        <div className="h-screen w-[240px] flex-none">
+        <div className="h-screen 1132:w-[240px] w-[70px] flex-none">
           <SidebarLeft />
         </div>
-        <div className="flex-auto relative flex flex-col">
+        <div className="flex-auto relative flex flex-col w-full">
           {isLoading && <div className='flex items-center justify-center absolute top-0 bottom-0 left-0 right-0 z-10 bg-main-200'>
             <Loading/>
           </div>}
-          <div ref={scrollRef} className="h-[70px] fixed top-0 flex-none left-[240px] right-0 z-20 flex items-center">
+          <div ref={scrollRef} className="h-[70px] fixed top-0 flex-none 1132:left-[240px] left-10 right-10 z-20 flex items-center">
             <Header />
           </div>
           <div className="flex-auto w-full z-0">

@@ -9,7 +9,7 @@ const Header = () => {
 
     const navigate = useNavigate()
   return (
-    <div className='flex justify-between w-full items-center px-[59px]'>
+    <div className='flex justify-between items-center px-[59px] max-w-[1248px] w-full'>
         <div className='flex gap-6 w-full items-center'>
             <div className='flex gap-6 text-gray-400'>
                 <span onClick={() => navigate(-1)} className='cursor-pointer'><BsArrowLeft size={24}/></span>

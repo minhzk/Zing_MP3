@@ -197,10 +197,10 @@ const Player = ({ setIsShowRightSidebar }) => {
           </span>
         </div>
         <div className="flex gap-4 pl-2">
-          <span>
+          <span className="cursor-pointer">
             <IoMdHeartEmpty size={16} />
           </span>
-          <span>
+          <span className="hidden 1024:block cursor-pointer">
             <BsThreeDots size={16} />
           </span>
         </div>
