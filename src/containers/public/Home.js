@@ -1,5 +1,5 @@
 import React from 'react'
-import { Slider, Section, NewRelease, ChartSection, SongItem } from '../../components'
+import { Slider, Section, NewRelease, ChartSection, SongItem, Loading } from '../../components'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { IoIosArrowForward } from 'react-icons/io'
@@ -21,7 +21,9 @@ const Home = () => {
   // console.log(weekChart);
 
   return (
-    <div className='overflow-y-auto overflow-x-hidden w-full mt-[70px]'>
+    <>
+      {(chill && sad && top100 && hotAlbum && weekChart && remix && seasonPlaylists && topNewSong) 
+      ? <div className='overflow-y-auto overflow-x-hidden w-full mt-[70px]'>
       <Slider/>
       <NewRelease/>
       {seasonPlaylists && <Section data={seasonPlaylists} items={seasonPlaylists?.items}></Section>}
@@ -69,6 +71,13 @@ const Home = () => {
       <Section data={top100} artists items={top100?.items}/>
       <Section data={hotAlbum} artists items={hotAlbum?.items}/>
     </div>
+
+    :
+      <div className='w-full h-screen flex items-center justify-center'>
+        <Loading/>
+      </div>
+    }
+    </>
   )
 }
 
