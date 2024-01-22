@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import icons from '../utils/icons'
 import { useSelector } from 'react-redux'
-import {SongItem} from './'
+import {SongItem} from '.'
 import { apiGetDetailPlaylist } from '../apis'
 import {Scrollbars} from 'react-custom-scrollbars-2'
 
@@ -66,14 +66,14 @@ const SidebarRight = () => {
       </div>
       : 
       <div className='w-full flex flex-col px-2'>
-        <SongItem
+        {curSongData && <SongItem
           thumbnail={curSongData?.thumbnail}
           title = {curSongData?.title}
           artistsNames={curSongData?.artistsNames}
           sid={curSongData?.encodeId}
           size='max-w-10'
           style='bg-main-500'
-        />
+        />}
         <div className='flex flex-col pt-[15px] pb-[5px] px-2 text-sm'>
           <span className='text-black-100 font-bold'>Tiếp theo</span>
           <span className='text-[rgba(20,20,20,0.4)] flex gap-[5px]'>
