@@ -22,3 +22,8 @@ export const getHome =  () => async (dispatch) => {
             })
     }
 }
+
+export const setCurrentWidth = (w) => ({
+    type: actionTypes.CURRENT_WIDTH,
+    w
+})

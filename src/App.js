@@ -11,6 +11,27 @@ import { apiGetChartHome } from './apis/music'
 function App() {
     const dispatch = useDispatch();
     const [weekChart, setWeekChart] = useState(null)
+
+    // lấy width lần đầu
+    const [currentWidth, setCurrentWidth] = useState(window.innerWidth)
+
+    // hàm setWidth khi resize
+    const setWidth = (e) => {
+        setCurrentWidth(e.target.innerWidth)
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', setWidth)
+        return () => {
+            window.removeEventListener('resize', setWidth)
+        }
+    })
+
+    // truyền width cho các page
+    useEffect(() => {
+        dispatch(actions.setCurrentWidth(currentWidth))
+    }, [currentWidth])
+
     useEffect(() => {
         dispatch(actions.getHome());
         const fetchChartData = async() => {

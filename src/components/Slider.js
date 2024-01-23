@@ -11,7 +11,7 @@ const { GrPrevious, GrNext} = icons
 var intervalId
 
 const Slider = () => {
-    const { banner } = useSelector((state) => state.app);
+    const { banner, currentWidth } = useSelector(state => state.app);
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [min, setMin] = useState(0)
@@ -102,12 +102,12 @@ const Slider = () => {
                 onMouseLeave={e => setIsAuto(true)}
                 onMouseEnter={e => setIsAuto(false)}
             >
-                {banner?.map((item, index) => (
+                {banner?.filter((i, index) => index <= (currentWidth < 1024 ? 1 : 2))?.map((item) => (
                     <img 
                         key={item.encodeId}
                         src={item.banner} 
                         onClick={() => handleClickBanner(item)}
-                        className={`slider-item cursor-pointer flex-1 object-contain w-[30%] rounded-lg ${index <= 2 ? 'block' : 'hidden'}`}
+                        className={`slider-item cursor-pointer object-cover ${currentWidth < 1024 ? 'w-1/2' : 'w-[30%]'} rounded-lg`}
                         alt='Banner'
                     />
                 ))}

@@ -4,9 +4,10 @@ import { SongItem } from "./";
 import { IoIosArrowForward } from "react-icons/io";
 
 const NewRelease = () => {
-  const { newRelease } = useSelector((state) => state.app);
+  const { newRelease, currentWidth } = useSelector((state) => state.app);
   const [activeMode, setActiveMode] = useState(0);
   const [songs, setSongs] = useState([])
+
 
   useEffect(() => {
     if (activeMode === 0) setSongs(newRelease?.items?.all)
@@ -56,7 +57,7 @@ const NewRelease = () => {
         </button>
       </div>
       <div className="flex w-full flex-wrap">
-        {songs?.filter((item, index) => index <= 11)?.map((item) => (
+        {songs?.filter((item, index) => index <= (currentWidth < 1224 ? 7 : 11))?.map((item) => (
           <div key={item?.encodeId} className="w-[50%] laptop:w-[33%] ">
             <SongItem
               thumbnail={item?.thumbnail}
