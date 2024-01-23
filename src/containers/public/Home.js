@@ -6,10 +6,12 @@ import { IoIosArrowForward } from 'react-icons/io'
 import Sliders from "react-slick"
 
 const Home = () => {
+  const {chill, sad, top100, hotAlbum, weekChart, remix, topYear, topNewSong, seasonPlaylists, currentWidth} = useSelector(state => state.app)
+
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: currentWidth < 1224 ? 2 : 3,
     slidesToScroll: 3,
     autoplay: true,
     speed: 500,
@@ -17,8 +19,6 @@ const Home = () => {
     cssEase: "linear",
     pauseOnHover: true
   }
-  const {chill, sad, top100, hotAlbum, weekChart, remix, topYear, topNewSong, seasonPlaylists} = useSelector(state => state.app)
-  // console.log(weekChart);
 
   return (
     <>

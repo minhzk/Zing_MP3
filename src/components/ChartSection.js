@@ -99,14 +99,14 @@ const ChartSection = () => {
         }
     }, [chart])
     return (
-        <div className='mt-12 relative min-h-[400px] rounded-lg'>
+        <div className='mt-12 relative min-[1324px]:max-h-[430px] h-[760px] rounded-lg '>
             <div className='bg-[rgba(51,16,76,0.9)] absolute inset-0 min-h-[400px] z-10 rounded-lg'></div>
             <div className='absolute inset-0 flex flex-col z-20 p-5 rounded-lg'>
                 <Link to={path.ZING_CHART} className='flex gap-2 items-center mb-5'>
                     <h3 className='text-[28px] text-white font-bold bg-zingchart bg-clip-text text-fill-color-transparent'>#zingchart</h3>
                     <span className='text-black p-1 rounded-full bg-white opacity-100 hover:opacity-90'><IoIosPlay size={20}/></span>
                 </Link>
-                <div className='flex gap-4 h-full'>
+                <div className='min-[1324px]:flex-row flex flex-col gap-4 h-full'>
                     <div className='flex-4 flex flex-col gap-[10px]'>
                         {rank?.filter((i, index) => index < 3)?.map((item, index) => (
                             <SongItem 
@@ -122,7 +122,7 @@ const ChartSection = () => {
                         ))}
                         <Link to={path.ZING_CHART} className='px-[25px] py-[5px] mt-[5px] text-white hover:bg-[hsla(0,0%,100%,.1)] border border-white rounded-full w-fit m-auto'>Xem thêm</Link>
                     </div>
-                    <div className='flex-6 h-full relative'>
+                    <div className='flex-6 order-first min-[1324px]:order-last min-[1324px]:w-[500px] h-full relative'>
                         {data && <Line ref={chartRef} data={data} options={options}/>}
                         <div style={{top: tooltipState.top, left: tooltipState.left, opacity: tooltipState.opacity, position: 'absolute'}}>
                             <SongItem 

@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import icons from '../utils/icons'
 
@@ -6,6 +7,7 @@ const { IoMdHeartEmpty, IoMdHeart, IoIosPlay, BsThreeDots, IoIosArrowForward } =
 
 const Section = ({ data, artists, items, number, wrap, notShowAll, releaseYear }) => {
   const navigate = useNavigate();
+  const { currentWidth } = useSelector(state => state.app)
   return (
     <div className={`${!notShowAll && 'mt-12'}`}>
       <div className="mb-5 flex items-center justify-between">
@@ -26,8 +28,8 @@ const Section = ({ data, artists, items, number, wrap, notShowAll, releaseYear }
               onClick={() => {
                 navigate(item?.link.split(".")[0], { state: { playAlbum: false}});
               }}
-              className={`flex cursor-pointer flex-col gap-2 ${wrap ? 'w-[18%]' : 'w-1/5'}
-              ${index <= (number || 4) ? "block" : "hidden"}`}
+              className={`flex cursor-pointer flex-col gap-2 ${wrap ? 'w-[18%]' : 'flex-1'}
+              ${index <= (number || (currentWidth < 1000 ? 2 : currentWidth < 1324 ? 3 : 4)) ? "block" : "hidden"}`}
             >
               <div className="relative w-full overflow-hidden rounded-[5px] group">
                 <div className="absolute inset-0 z-20 group-hover:bg-overlay-50 rounded-[5px] text-white flex items-center justify-center gap-7">
