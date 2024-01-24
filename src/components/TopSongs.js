@@ -18,7 +18,7 @@ const TopSongs = ({data, number, isHidePlaylist, link}) => {
     <div className='w-full flex flex-col'>
         <div className='mb-5'>
           {songs?.map((item, index) => (
-            <List songData={item} order={index + 1} isHidePlaylist={isHidePlaylist} isHideIcon key={item?.encodeId}/>
+            <List songData={item} order={index + 1} isHidePlaylist={isHidePlaylist} isHideIcon minTitle={16} key={item?.encodeId}/>
           ))}
         </div>
         {number !== 100 && <button type='button' onClick={() => link ? navigate(link?.split('.')[0]) : setIsShowAll(prev => !prev) } className='py-2 px-[25px] border border-main-500 w-fit mx-auto text-sm rounded-full font-medium text-text-hover hover:bg-[hsla(0,0%,100%,0.3)]'>

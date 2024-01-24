@@ -10,7 +10,7 @@ import * as actions from '../store/actions';
 
 const { LuMusic } = icons
 
-const List = ({songData, isHidePlaylist, isHideIcon, order}) => {
+const List = ({songData, isHidePlaylist, isHideIcon, order, minTitle}) => {
 
     const dispatch = useDispatch()
 
@@ -29,8 +29,8 @@ const List = ({songData, isHidePlaylist, isHideIcon, order}) => {
             {!isHideIcon && <span className='text-song-item-action'><LuMusic size={15}/></span>}
             <img src={songData?.thumbnail} alt="thumbnail" className='w-10 h-10 object-cover rounded-md' />
             <span className='flex flex-col w-full'>
-                <span className='text-sm font-medium text-black-100'>{songData?.title?.length > 34 ? `${songData?.title?.slice(0, 34)}...` : songData?.title}</span>
-                <span className='text-text-secondary font-normal'>{songData?.artistsNames}</span>
+                <span className='text-sm font-medium text-black-100'>{songData?.title?.length > minTitle ? `${songData?.title?.slice(0, (minTitle || 34))}...` : songData?.title}</span>
+                <span className='text-text-secondary font-normal'>{songData?.artistsNames?.length > minTitle ? `${songData?.artistsNames?.slice(0, (minTitle || 34))}...` : songData?.artistsNames}</span>
             </span>
         </div>
         {!isHidePlaylist && <div className='flex-[5] flex items-center justify-start text-song-item-action'>
