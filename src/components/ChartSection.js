@@ -99,7 +99,7 @@ const ChartSection = () => {
         }
     }, [chart])
     return (
-        <div className='mt-12 relative min-[1324px]:max-h-[430px] h-[760px] rounded-lg '>
+        <div className='mt-12 relative min-[1324px]:max-h-[430px] h-[790px] rounded-lg '>
             <div className='bg-[rgba(51,16,76,0.9)] absolute inset-0 min-h-[400px] z-10 rounded-lg'></div>
             <div className='absolute inset-0 flex flex-col z-20 p-5 rounded-lg'>
                 <Link to={path.ZING_CHART} className='flex gap-2 items-center mb-5'>
