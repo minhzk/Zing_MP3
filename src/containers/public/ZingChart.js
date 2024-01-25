@@ -109,6 +109,7 @@ const ZingChart = () => {
     ref.current.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" })
   }, [chartData])
 
+
   return (
     <div className='mt-[70px]'>
       <div ref={ref} className='flex flex-col w-full gap-8'>

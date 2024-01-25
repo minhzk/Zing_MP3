@@ -41,6 +41,11 @@ export const setRecent =  (data) => ({
     data
 })
 
+export const setRecentPlaylists =  (data) => ({
+    type: actionTypes.SET_RECENT_PLAYLIST,
+    data
+})
+
 export const search = (keyword) => async (dispatch) => {
     try {
         const res = await apis.apiSearch(keyword)

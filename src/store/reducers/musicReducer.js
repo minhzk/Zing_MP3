@@ -9,6 +9,7 @@ const initState = {
     songs: null,
     curPlaylistId: null,
     recentSongs: [],
+    recentPlaylists: [],
     searchData: {},
     keyword: '',
 }
@@ -59,6 +60,22 @@ const musicReducer = (state = initState, action) => {
             return {
                 ...state,
                 recentSongs: songs
+            }
+        
+        case actionTypes.SET_RECENT_PLAYLIST:
+            let playlists = state.recentPlaylists
+            if (action.data) {
+                if (state.recentPlaylists?.some(item => item.pid === action.data.pid)) {
+                    playlists = playlists.filter((item) => item.pid !== action.data.pid)
+                }
+                if (playlists.length >= 10) {
+                    playlists = playlists.filter((item, index, self) => index !== self.length - 1)
+                }
+                playlists = [action.data, ...playlists]
+            }
+            return {
+                ...state,
+                recentPlaylists: playlists
             }
         case actionTypes.SEARCH:
             return {
