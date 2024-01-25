@@ -10,7 +10,7 @@ import * as actions from '../store/actions';
 
 const { LuMusic } = icons
 
-const List = ({songData, isHidePlaylist, isHideIcon, order, minTitle}) => {
+const List = ({songData, isHidePlaylist, isHideIcon, order, minTitle, playlistData}) => {
 
     const dispatch = useDispatch()
 
@@ -22,6 +22,7 @@ const List = ({songData, isHidePlaylist, isHideIcon, order, minTitle}) => {
         dispatch(actions.play(true))
         dispatch(actions.playAlbum(true))
         dispatch(actions.setRecent({thumbnail: songData?.thumbnail, title: songData?.title, sid: songData?.encodeId, artistsNames: songData?.artistsNames}))
+        dispatch(actions.setRecentPlaylists({thumbnail: playlistData?.thumbnailM, title: playlistData?.title, pid: playlistData?.encodeId, link: playlistData?.link}))
     }}
     >
         <div className='flex items-center gap-2 flex-[5]'>

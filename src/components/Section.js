@@ -5,7 +5,7 @@ import icons from '../utils/icons'
 
 const { IoMdHeartEmpty, IoMdHeart, IoIosPlay, BsThreeDots, IoIosArrowForward } = icons
 
-const Section = ({ data, artists, items, number, wrap, notShowAll, releaseYear }) => {
+const Section = ({ data, artists, items, number, wrap, notShowAll, releaseYear, minGap }) => {
   const navigate = useNavigate();
   const { currentWidth } = useSelector(state => state.app)
   return (
@@ -32,7 +32,7 @@ const Section = ({ data, artists, items, number, wrap, notShowAll, releaseYear }
               ${index <= (number || (currentWidth < 1000 ? 2 : currentWidth < 1324 ? 3 : 4)) ? "block" : "hidden"}`}
             >
               <div className="relative w-full overflow-hidden rounded-[5px] group">
-                <div className="absolute inset-0 z-20 group-hover:bg-overlay-50 rounded-[5px] text-white flex items-center justify-center gap-7">
+                <div className={`absolute inset-0 z-20 group-hover:bg-overlay-50 rounded-[5px] text-white flex items-center justify-center ${minGap ? 'gap-[14px]' : 'gap-7'}`}>
                   <span className="hidden group-hover:flex"><IoMdHeartEmpty size={22}/></span>
                   <span 
                     onClick={(e) => {
@@ -73,7 +73,7 @@ const Section = ({ data, artists, items, number, wrap, notShowAll, releaseYear }
                 :
                  (
                   <span className="text-sm font-normal text-text-secondary">
-                    {item?.sortDescription.length > 54
+                    {item?.sortDescription?.length > 54
                       ? `${item?.sortDescription.slice(0, 54)}... `
                       : item?.sortDescription}
                   </span>

@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 const { LuDot  } = icons
 
-const Lists = ({totalDuration}) => {
+const Lists = ({totalDuration, playlistData}) => {
   const { songs } = useSelector(state => state.music)
   return (
     <div className='w-full flex flex-col '>
@@ -17,7 +17,7 @@ const Lists = ({totalDuration}) => {
         </div>
         <div className='flex flex-col'>
             {songs?.map(item => (
-              <List key={item.encodeId} songData={item}/>
+              <List key={item.encodeId} songData={item} playlistData={playlistData} />
             ))}
         </div>
         <span className='flex items-center gap-1 pt-[16px] text-text-secondary text-sm font-normal'>

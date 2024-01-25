@@ -92,7 +92,7 @@ const Playlist = () => {
               <span className='text-text-secondary'>Lời tựa </span>
               <span className='text-black-100 font-normal'>{playlistData?.sortDescription}</span>
             </span>
-            <Lists totalDuration={playlistData?.song?.totalDuration} />
+            <Lists totalDuration={playlistData?.song?.totalDuration} playlistData={playlistData} />
           </div>
         </Scrollbars>
       </div>

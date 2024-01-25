@@ -7,6 +7,8 @@ import Sliders from "react-slick"
 
 const Home = () => {
   const {chill, sad, top100, hotAlbum, weekChart, remix, topYear, topNewSong, seasonPlaylists, currentWidth} = useSelector(state => state.app)
+  const { recentPlaylists } = useSelector(state => state.music)
+
 
   const settings = {
     dots: false,
@@ -25,6 +27,7 @@ const Home = () => {
       {(chill && sad && top100 && hotAlbum && weekChart && remix && seasonPlaylists && topNewSong) 
       ? <div className='overflow-y-auto overflow-x-hidden w-full mt-[70px]'>
       <Slider/>
+      <Section data={{title: 'Gần Đây'}} items={recentPlaylists} number={6} minGap />
       <NewRelease/>
       {seasonPlaylists && <Section data={seasonPlaylists} items={seasonPlaylists?.items}></Section>}
       <Section data={remix} items={remix?.items}/>
