@@ -28,7 +28,7 @@ const SearchPlaylists = () => {
         number={100}
         artists
         wrap
-        notShowAll
+        showAll
       />
     </div>
   )

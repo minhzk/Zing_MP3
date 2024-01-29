@@ -14,7 +14,7 @@ const path = {
     PLAYLIST_SEARCH: 'playlist',
     HOME__SINGER: ':singer',
     HOME_ARTIST__SINGER: 'nghe-si/:singer',
-    
+    TOP100: 'top100'
 };
 
 export default path;
