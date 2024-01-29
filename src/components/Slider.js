@@ -102,12 +102,12 @@ const Slider = () => {
                 onMouseLeave={e => setIsAuto(true)}
                 onMouseEnter={e => setIsAuto(false)}
             >
-                {banner?.filter((i, index) => index <= (currentWidth < 1024 ? 1 : 2))?.map((item) => (
+                {banner?.map((item, index) => (
                     <img 
                         key={item.encodeId}
                         src={item.banner} 
                         onClick={() => handleClickBanner(item)}
-                        className={`slider-item cursor-pointer object-cover ${currentWidth < 1024 ? 'w-1/2' : 'w-[30%]'} rounded-lg`}
+                        className={`slider-item cursor-pointer object-cover ${currentWidth < 1024 ? 'w-[48%]' : 'w-[31%]'} rounded-lg flex-1`}
                         alt='Banner'
                     />
                 ))}
