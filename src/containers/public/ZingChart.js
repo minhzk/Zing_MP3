@@ -134,7 +134,7 @@ const ZingChart = () => {
           </div>
         </div>
         <div className='flex flex-col'>
-          <List isHideIcon />
+          <List isHideIcon recommend songData={chartData?.RTChart?.promotes[Math.round(Math.random() * chartData?.RTChart?.promotes?.length) - 1]}/>
           <TopSongs data={chartData?.RTChart?.items} number={10} isHidePlaylist={false} />
         </div>
         <div className='relative mx-[-59px]'>
