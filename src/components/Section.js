@@ -5,14 +5,14 @@ import icons from '../utils/icons'
 
 const { IoMdHeartEmpty, IoMdHeart, IoIosPlay, BsThreeDots, IoIosArrowForward } = icons
 
-const Section = ({ data, artists, items, number, wrap, notShowAll, releaseYear, minGap }) => {
+const Section = ({ data, artists, items, number, wrap, showAll, releaseYear, minGap }) => {
   const navigate = useNavigate();
   const { currentWidth } = useSelector(state => state.app)
   return (
-    <div className={`${!notShowAll && 'mt-12'}`}>
+    <div className={`${!showAll && 'mt-12'} mb-[42px]`}>
       <div className="mb-5 flex items-center justify-between">
         <h3 className="text-xl font-bold text-black-100">{data?.title}</h3>
-        {!notShowAll && <div className="text-text-secondary flex gap-1 cursor-pointer">
+        {!showAll && <div className="text-text-secondary flex gap-1 cursor-pointer">
           <span className="text-[13px] font-medium ">
             TẤT CẢ
           </span>
@@ -28,7 +28,7 @@ const Section = ({ data, artists, items, number, wrap, notShowAll, releaseYear, 
               onClick={() => {
                 navigate(item?.link.split(".")[0], { state: { playAlbum: false}});
               }}
-              className={`flex cursor-pointer flex-col gap-2 ${wrap ? 'w-[18%]' : 'flex-1'}
+              className={`flex cursor-pointer flex-col gap-2 w-[18%] 
               ${index <= (number || (currentWidth < 1000 ? 2 : currentWidth < 1324 ? 3 : 4)) ? "block" : "hidden"}`}
             >
               <div className="relative w-full overflow-hidden rounded-[5px] group">
@@ -57,8 +57,8 @@ const Section = ({ data, artists, items, number, wrap, notShowAll, releaseYear, 
                     data?.options?.hideTitle ? "hidden" : "block"
                   }`}
                 >
-                  {item?.title.length > 26
-                    ? `${item?.title.slice(0, 26)}... `
+                  {item?.title.length > 23
+                    ? `${item?.title.slice(0, 23)}... `
                     : item?.title}
                 </span>
                 { artists 

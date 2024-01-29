@@ -102,3 +102,16 @@ new Promise(async (resolve, reject) => {
         reject(error);
     }
 });
+
+export const apiGetTop100 = () =>
+new Promise(async (resolve, reject) => {
+    try {
+        const res = await axios({
+            url: '/top100',
+            method: 'get',
+        });
+        resolve(res);
+    } catch (error) {
+        reject(error);
+    }
+});
