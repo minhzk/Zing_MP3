@@ -6,13 +6,13 @@ const Top100 = () => {
     const [top100Data, setTop100Data] = useState(null)
 
     useEffect(() => {
-        const fetchChartData = async() => {
+        const fetchTop100Data = async() => {
           const res = await apiGetTop100()
           if (res?.data?.err === 0) {
             setTop100Data(res?.data?.data)
           }
         }
-        fetchChartData()
+        fetchTop100Data()
       }, [])
     console.log(top100Data);
 

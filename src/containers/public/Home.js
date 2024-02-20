@@ -24,7 +24,7 @@ const Home = () => {
 
   return (
     <>
-      {(chill && sad && top100 && hotAlbum && weekChart && remix && seasonPlaylists && topNewSong) 
+      {(chill && sad && top100 && hotAlbum && weekChart && remix && topNewSong) 
       ? <div className='overflow-y-auto overflow-x-hidden w-full mt-[70px]'>
       <Slider/>
       <Section data={{title: 'Gần Đây'}} items={recentPlaylists} number={6} minGap />

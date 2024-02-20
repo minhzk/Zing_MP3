@@ -14,7 +14,9 @@ const path = {
     PLAYLIST_SEARCH: 'playlist',
     HOME__SINGER: ':singer',
     HOME_ARTIST__SINGER: 'nghe-si/:singer',
-    TOP100: 'top100'
+    SEARCH_ARTIST__SINGER: 'artist',
+    TOP100: 'top100',
+    TOP_NEW_RELEASE: 'moi-phat-hanh',
 };
 
 export default path;

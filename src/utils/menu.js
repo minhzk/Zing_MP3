@@ -4,11 +4,6 @@ const { MdOutlineLibraryMusic, MdOutlineFeed, RiPieChartLine, TbChartArcs, PiMus
   icons;
 export const mainSidebarMenu = [
   {
-    path: "mymusic",
-    text: "Cá nhân",
-    icon: <MdOutlineLibraryMusic size={24} />,
-  },
-  {
     path: "",
     text: "Khám phá",
     end: true,
@@ -20,9 +15,14 @@ export const mainSidebarMenu = [
     icon: <RiPieChartLine size={24} />,
   },
   {
-    path: "follow",
-    text: "Theo dõi",
+    path: "radio",
+    text: "Radio",
     icon: <MdOutlineFeed size={24} />,
+  },
+  {
+    path: "mymusic",
+    text: "Thư viện",
+    icon: <MdOutlineLibraryMusic size={24} />,
   },
 ];
 

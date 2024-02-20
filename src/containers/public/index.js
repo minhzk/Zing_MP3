@@ -11,5 +11,8 @@ export { default as SearchSongs } from './SearchSongs';
 export { default as SearchPlaylists } from './SearchPlaylists';
 export { default as Singer } from './Singer';
 export { default as Top100 } from './Top100';
+export { default as TopNewRelease } from './TopNewRelease';
+export { default as SearchArtists } from './SearchArtists';
+
 
 
