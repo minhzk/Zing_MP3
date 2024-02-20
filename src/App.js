@@ -1,6 +1,6 @@
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Home, Login, Public, Personal, Playlist, WeekRank, ZingChart, Search, SearchAll, SearchSongs, Singer, SearchPlaylists, Top100 } from './containers/public';
+import { Home, Login, Public, Personal, Playlist, WeekRank, ZingChart, Search, SearchAll, SearchSongs, Singer, SearchPlaylists, Top100, TopNewRelease, SearchArtists } from './containers/public';
 import { Routes, Route } from 'react-router-dom';
 import path from './utils/path';
 import { useEffect, useState } from 'react';
@@ -80,6 +80,10 @@ function App() {
                             element={<Top100 />}
                         />
                         <Route
+                            path={path.TOP_NEW_RELEASE}
+                            element={<TopNewRelease />}
+                        />
+                        <Route
                             path={path.SEARCH}
                             element={<Search />}
                         >
@@ -94,6 +98,10 @@ function App() {
                             <Route
                                 path={path.PLAYLIST_SEARCH}
                                 element={<SearchPlaylists />}
+                            />
+                            <Route
+                                path={path.SEARCH_ARTIST__SINGER}
+                                element={<SearchArtists />}
                             />
                         </Route>
 

@@ -115,3 +115,16 @@ new Promise(async (resolve, reject) => {
         reject(error);
     }
 });
+
+export const apiGetTopNewRealeaseSong = () =>
+new Promise(async (resolve, reject) => {
+    try {
+        const res = await axios({
+            url: '/moi-phat-hanh',
+            method: 'get',
+        });
+        resolve(res);
+    } catch (error) {
+        reject(error);
+    }
+});
