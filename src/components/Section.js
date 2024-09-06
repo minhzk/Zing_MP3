@@ -37,7 +37,7 @@ const Section = ({ data, artists, items, number, wrap, showAll, releaseYear, min
                   <span 
                     onClick={(e) => {
                       e.stopPropagation()
-                      navigate(item?.link.split(".")[0], { state: { playAlbum: true}})
+                      navigate(item?.link?.split(".")[0], { state: { playAlbum: true}})
                     }} 
                     className="pl-[6px] pr-[2px] pt-1 pb-1 hidden group-hover:flex border border-white rounded-full"
                   >
@@ -57,7 +57,7 @@ const Section = ({ data, artists, items, number, wrap, showAll, releaseYear, min
                     data?.options?.hideTitle ? "hidden" : "block"
                   }`}
                 >
-                  {item?.title.length > 23
+                  {item?.title?.length > 23
                     ? `${item?.title.slice(0, 23)}... `
                     : item?.title}
                 </span>
